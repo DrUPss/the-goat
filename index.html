@@ -27,7 +27,6 @@ h3 { font-size: 1rem; margin: 14px 0 8px; color: #f0e2b8; font-weight: 600; }
 .menu-btn { display: block; width: 100%; padding: 15px; margin-bottom: 9px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; color: #fff; font-size: 1.05rem; font-weight: 500; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
 .menu-btn:active { transform: scale(0.97); background: rgba(255,255,255,0.15); }
 .menu-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(212,184,122,0.5); }
-.menu-btn .badge { position: absolute; top: 8px; right: 12px; background: #dc5050; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 20px; }
 .back-btn { background: rgba(255,255,255,0.05); color: #ddd; font-size: 0.95rem; padding: 12px; margin-top: 8px; }
 
 .screen { display: none; animation: fade 0.3s; }
@@ -107,7 +106,6 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 .league-row.top-club { color: #6fdc6f; }
 .attr-row { display: flex; justify-content: space-between; font-size: 0.72rem; padding: 2px 0; color: #ddd; }
 .attr-val { color: #f0e2b8; font-weight: 600; }
-.attr-val.down { color: #dc6f6f; }
 
 .match-center { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 14px; margin: 10px 0; border: 1px dashed rgba(255,255,255,0.15); text-align: center; min-height: 70px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.88rem; color: #ccc; }
 .match-result { font-size: 1.4rem; font-weight: 700; color: #f0e2b8; margin: 5px 0; }
@@ -208,12 +206,6 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 .news-comment { display: flex; gap: 6px; font-size: 0.78rem; color: #ccc; margin-bottom: 5px; padding: 5px 8px; background: rgba(255,255,255,0.03); border-radius: 8px; }
 .news-comment-name { font-weight: 700; color: #f0e2b8; }
 
-.sandbox-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.88rem; }
-.sandbox-row label { margin-bottom: 0; font-size: 0.88rem; flex: 1; }
-.sandbox-row input[type="number"], .sandbox-row input[type="text"] { width: 130px; padding: 8px 10px; text-align: center; }
-.sandbox-row select { width: 150px; padding: 8px 10px; }
-.sandbox-info { background: rgba(158,111,217,0.15); border: 1px solid rgba(158,111,217,0.5); border-radius: 14px; padding: 12px; margin-bottom: 14px; font-size: 0.85rem; color: #e0c8ff; line-height: 1.5; }
-
 .match-type { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-left: 4px; }
 .match-type.friendly { background: rgba(255,255,255,0.15); color: #ddd; }
 .match-type.cup { background: rgba(217,185,108,0.3); color: #f0e2b8; }
@@ -246,7 +238,6 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 .card-yellow { background: #f0e2b8; color: #333; }
 .card-red { background: #dc5050; color: #fff; }
 
-/* СПОНСОРЫ */
 .sponsor-card { background: rgba(255,255,255,0.06); border-radius: 14px; padding: 14px; margin-bottom: 10px; border-left: 4px solid #d9b96c; }
 .sponsor-card.locked { opacity: 0.5; border-left-color: #555; }
 .sponsor-logo { font-size: 2.2rem; float: left; margin-right: 12px; }
@@ -259,6 +250,10 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 .sponsor-btn { background: linear-gradient(135deg, #d9b96c, #b8963a); border: none; color: #1a1a1a; font-weight: 700; padding: 10px; font-size: 0.88rem; border-radius: 12px; width: 100%; cursor: pointer; }
 .sponsor-btn:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: default; }
 .sponsor-btn.active-sponsor { background: linear-gradient(135deg, #6fdc6f, #2e7d32); color: #fff; }
+
+.tap-timer { text-align: center; font-size: 3rem; color: #f0e2b8; margin: 20px 0; font-weight: 700; }
+.tap-count { text-align: center; font-size: 1.5rem; color: #6fdc6f; margin-bottom: 14px; }
+.tap-big-btn { font-size: 1.8rem; padding: 50px; border-radius: 30px; }
 </style>
 </head>
 <body class="bg-default">
@@ -268,46 +263,13 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     <h1>THE GOAT</h1>
     <div class="subtitle">XERROWORX STUDIOS</div>
     <button class="menu-btn" id="btn-new-game">Новая игра</button>
-    <button class="menu-btn" id="btn-sandbox" style="background: linear-gradient(135deg, #9e6fd9, #6f3a9e); color: #fff;">🎮 Песочница</button>
+    <button class="menu-btn" id="btn-endless" style="background: linear-gradient(135deg, #9e6fd9, #6f3a9e); color: #fff;">♾️ Бесконечный режим</button>
     <button class="menu-btn" id="btn-load-game">Загрузить игру</button>
     <button class="menu-btn" id="btn-achievements">🏆 Достижения</button>
     <button class="menu-btn" id="btn-leaderboard">🏅 Лидерборд</button>
     <button class="menu-btn" id="btn-settings">Настройки</button>
     <div id="account-info" class="account-badge hidden"></div>
     <div class="footer-credit">© XerroWorx Studios</div>
-  </div>
-
-  <div id="screen-sandbox" class="screen">
-    <h2>🎮 Песочница</h2>
-    <div class="sandbox-info">
-      <strong>Свободный режим.</strong> Изменяй всё. Достижения не открываются.
-    </div>
-    <div class="sandbox-row"><label>ФИО</label><input type="text" id="sb-fullname" value="Игрок"></div>
-    <div class="sandbox-row">
-      <label>Позиция</label>
-      <select id="sb-position">
-        <option value="Вратарь">Вратарь</option>
-        <option value="Защитник">Защитник</option>
-        <option value="Полузащитник">Полузащитник</option>
-        <option value="Нападающий">Нападающий</option>
-      </select>
-    </div>
-    <div class="sandbox-row"><label>Сезон</label><input type="number" id="sb-season" value="1" min="1" max="30"></div>
-    <div class="sandbox-row"><label>Возраст</label><input type="number" id="sb-age" value="17" min="15" max="45"></div>
-    <div class="sandbox-row"><label>OVR (до 99)</label><input type="number" id="sb-ovr" value="85" min="1" max="99"></div>
-    <div class="sandbox-row"><label>Голы</label><input type="number" id="sb-goals" value="0" min="0"></div>
-    <div class="sandbox-row"><label>Ассисты</label><input type="number" id="sb-assists" value="0" min="0"></div>
-    <div class="sandbox-row"><label>Матчи</label><input type="number" id="sb-matches" value="0" min="0"></div>
-    <div class="sandbox-row"><label>Сейвы</label><input type="number" id="sb-saves" value="0" min="0"></div>
-    <div class="sandbox-row"><label>Репутация</label><input type="number" id="sb-reputation" value="50" min="0" max="100"></div>
-    <div class="sandbox-row"><label>Рейтинг клуба</label><input type="number" id="sb-club-rating" value="80" min="50" max="99"></div>
-    <div class="sandbox-row"><label>Деньги ($)</label><input type="number" id="sb-money" value="100000" min="0"></div>
-    <div class="sandbox-row"><label>Золотой Мяч</label><input type="number" id="sb-golden-ball" value="0" min="0"></div>
-    <div class="sandbox-row"><label>Золотые Бутсы</label><input type="number" id="sb-golden-boot" value="0" min="0"></div>
-    <div class="sandbox-row"><label>Кубок ЧМ</label><input type="number" id="sb-world-cup" value="0" min="0"></div>
-    <div class="sandbox-row"><label>Лига Чемпионов</label><input type="number" id="sb-champions" value="0" min="0"></div>
-    <button class="btn-primary" id="btn-sandbox-start" style="margin-top:14px;">🚀 Запустить</button>
-    <button class="menu-btn back-btn" id="btn-back-sandbox">← Назад</button>
   </div>
 
   <div id="screen-newgame" class="screen">
@@ -409,7 +371,6 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 
   <div id="screen-notifications" class="screen">
     <h2>🔔 Уведомления</h2>
-    <div class="info-box">События, праздники и напоминания.</div>
     <div id="notifications-list"></div>
     <button class="menu-btn back-btn" id="btn-back-notifications">← Назад</button>
   </div>
@@ -422,14 +383,14 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 
   <div id="screen-sponsors" class="screen">
     <h2>💼 Спонсоры</h2>
-    <div class="info-box">Заключай контракты со спонсорами. Чем выше репутация и больше трофеев — тем лучше предложения.</div>
+    <div class="info-box">Заключай контракты. Чем выше репутация и больше трофеев — тем лучше предложения.</div>
     <div id="sponsors-list"></div>
     <button class="menu-btn back-btn" id="btn-back-sponsors">← Назад</button>
   </div>
 
   <div id="screen-leaderboard" class="screen">
     <h2>🏅 Лидерборд</h2>
-    <div class="info-box">Локальный лидерборд на этом устройстве.</div>
+    <div class="info-box">Топ карьер. Мусорка — удалить свою запись.</div>
     <div id="lb-list"></div>
     <button class="menu-btn back-btn" id="btn-back-lb">← Назад</button>
   </div>
@@ -438,6 +399,13 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     <h2>⚽ Топ игроков сезона</h2>
     <div id="top-players-list"></div>
     <button class="menu-btn back-btn" id="btn-back-top-players">← Назад</button>
+  </div>
+
+  <div id="screen-lineup" class="screen">
+    <h2>👥 Состав команды</h2>
+    <div class="info-box" id="lineup-info"></div>
+    <div id="lineup-list"></div>
+    <button class="menu-btn back-btn" id="btn-back-lineup">← Назад</button>
   </div>
 
   <div id="screen-trophies" class="screen">
@@ -468,12 +436,6 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     </div>
   </div>
 
-  <div id="screen-injury" class="screen">
-    <h2>🏥 Травма</h2>
-    <div id="injury-content"></div>
-    <button class="btn-primary" id="btn-injury-ok" style="margin-top:14px;">Продолжить</button>
-  </div>
-
   <div id="screen-career" class="screen">
     <div class="season-badge" id="career-season"></div>
     <div class="stats-bar">
@@ -487,8 +449,8 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       <div class="stat-item"><div class="stat-value" id="cs-clean-sheets">0</div><div class="stat-label">Сухие</div></div>
     </div>
     <div class="stats-bar" style="margin-top: -6px;">
-      <div class="stat-item"><div class="stat-value" id="cs-yellows">0</div><div class="stat-label">🟨 Жёлтые</div></div>
-      <div class="stat-item"><div class="stat-value" id="cs-reds">0</div><div class="stat-label">🟥 Красные</div></div>
+      <div class="stat-item"><div class="stat-value" id="cs-yellows">0</div><div class="stat-label">🟨</div></div>
+      <div class="stat-item"><div class="stat-value" id="cs-reds">0</div><div class="stat-label">🟥</div></div>
     </div>
     <div class="money-display" id="career-money">💰 Капитал: $0</div>
     <div id="competitions-info" class="info-box"></div>
@@ -502,7 +464,8 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     </div>
     <button class="btn-primary" id="btn-play-match">Сыграть матч</button>
     <button class="btn-injury-skip hidden" id="btn-skip-injury">🏥 Пропустить матчи травмы</button>
-    <button class="btn-secondary" id="btn-training">🏋️ Тренировка (доступна)</button>
+    <button class="btn-secondary" id="btn-training">🏋️ Тренировка</button>
+    <button class="btn-secondary" id="btn-lineup">👥 Состав</button>
     <button class="btn-secondary" id="btn-sponsors">💼 Спонсоры</button>
     <button class="btn-secondary" id="btn-investments">💰 Инвестиции</button>
     <button class="btn-secondary" id="btn-notifications">🔔 Уведомления</button>
@@ -519,7 +482,8 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     <div id="training-choose">
       <div style="text-align:center; font-size:0.9rem; margin-bottom:8px; color:#ddd;">Что качать?</div>
       <div class="train-attrs-list" id="train-attrs-list"></div>
-      <button class="btn-primary" id="btn-start-training" disabled>▶️ Начать</button>
+      <button class="btn-primary" id="btn-start-training" disabled>▶️ Начать (точность)</button>
+      <button class="btn-secondary" id="btn-training-tap-mode">⚡ Быстрый тап (доступно раз в 2 полугодия)</button>
     </div>
     <div id="training-game" class="hidden">
       <div class="train-info" id="train-level-info">Уровень 1 из 5</div>
@@ -531,6 +495,16 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       <div class="train-result" id="train-result"></div>
     </div>
     <button class="menu-btn back-btn" id="btn-back-training">← Назад</button>
+  </div>
+
+  <div id="screen-training-tap" class="screen">
+    <h2>⚡ Быстрая тренировка</h2>
+    <div class="info-box">Тапай быстро! 5 тапов = 1 очко характеристики. У тебя 10 секунд.</div>
+    <div class="tap-timer" id="tap-timer">10.0</div>
+    <div class="tap-count" id="tap-count">Тапов: 0</div>
+    <button class="btn-primary tap-big-btn" id="btn-tap-big">ТАП!</button>
+    <div class="train-result" id="tap-result"></div>
+    <button class="menu-btn back-btn" id="btn-back-tap">← Назад</button>
   </div>
 
   <div id="screen-offers" class="screen">
@@ -548,230 +522,242 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 <script>
 (function() {
   'use strict';
-
   // ==================== ТАЛАНТЫ ====================
-  var TALENTS = [
-    { id: 'none', name: 'Нету', emoji: '❌', pos: 'Любая', hardcore: true, bonus: {}, desc: 'ХАРДКОР! Без бонусов.' },
-    { id: 'ronaldo', name: 'Роналду', emoji: '🇵🇹', pos: 'Нападающий', bonus: { 'Удар': 8, 'Физика': 5, 'Голова': 6, 'Дриблинг': 5 }, desc: 'Феноменальный бомбардир.' },
-    { id: 'messi', name: 'Месси', emoji: '🇦🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 10, 'Пасы': 7, 'Контроль мяча': 8, 'Удар': 4 }, desc: 'Волшебный дриблинг.' },
-    { id: 'neymar', name: 'Неймар', emoji: '🇧🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 9, 'Удар': 5, 'Пасы': 5, 'Слабая нога': 6 }, desc: 'Техничный.' },
-    { id: 'mbappe', name: 'Мбаппе', emoji: '🇫🇷', pos: 'Нападающий', bonus: { 'Удар': 7, 'Дриблинг': 7, 'Физика': 5, 'Стамина': 5 }, desc: 'Скорость.' },
-    { id: 'haaland', name: 'Холанд', emoji: '🇳🇴', pos: 'Нападающий', bonus: { 'Удар': 9, 'Физика': 8, 'Голова': 7, 'Стамина': 4 }, desc: 'Машина голов.' },
-    { id: 'mussiala', name: 'Мусиала', emoji: '🇩🇪', pos: 'Полузащитник', bonus: { 'Дриблинг': 8, 'Пасы': 6, 'Контроль мяча': 7, 'Удар': 4 }, desc: 'Молодой талант.' },
-    { id: 'bellingham', name: 'Беллингем', emoji: '🏴', pos: 'Полузащитник', bonus: { 'Физика': 7, 'Пасы': 6, 'Удар': 5, 'Защита': 5 }, desc: 'Универсал.' },
-    { id: 'vinicius', name: 'Винисиус', emoji: '🇧🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 9, 'Удар': 6, 'Стамина': 4, 'Контроль мяча': 5 }, desc: 'Быстрый вингер.' },
-    { id: 'debruyne', name: 'Де Брёйне', emoji: '🇧🇪', pos: 'Полузащитник', bonus: { 'Пасы': 10, 'Удар': 6, 'Контроль мяча': 6, 'Дриблинг': 4 }, desc: 'Король ассистов.' },
-    { id: 'modric', name: 'Модрич', emoji: '🇭🇷', pos: 'Полузащитник', bonus: { 'Пасы': 8, 'Контроль мяча': 8, 'Дриблинг': 5, 'Стамина': 5 }, desc: 'Маэстро.' },
-    { id: 'salah', name: 'Салах', emoji: '🇪🇬', pos: 'Нападающий', bonus: { 'Удар': 7, 'Дриблинг': 7, 'Стамина': 5, 'Слабая нога': 5 }, desc: 'Король Египта.' },
-    { id: 'lewandowski', name: 'Левандовски', emoji: '🇵🇱', pos: 'Нападающий', bonus: { 'Удар': 9, 'Голова': 7, 'Физика': 6, 'Контроль мяча': 4 }, desc: 'Бомбардир.' },
-    { id: 'vandijk', name: 'Ван Дейк', emoji: '🇳🇱', pos: 'Защитник', bonus: { 'Защита': 9, 'Голова': 8, 'Физика': 7, 'Пасы': 4 }, desc: 'Стена.' },
-    { id: 'ramos', name: 'Рамос', emoji: '🇪🇸', pos: 'Защитник', bonus: { 'Защита': 8, 'Голова': 7, 'Физика': 7, 'Удар': 4 }, desc: 'Жёсткий.' },
-    { id: 'maldini', name: 'Мальдини', emoji: '🇮🇹', pos: 'Защитник', bonus: { 'Защита': 10, 'Пасы': 5, 'Физика': 6, 'Голова': 5 }, desc: 'Легенда.' },
-    { id: 'hakimi', name: 'Хакими', emoji: '🇲🇦', pos: 'Защитник', bonus: { 'Защита': 6, 'Стамина': 8, 'Физика': 6, 'Пасы': 5 }, desc: 'Атакующий.' },
-    { id: 'buffon', name: 'Буффон', emoji: '🇮🇹', pos: 'Вратарь', bonus: { 'Ловля': 9, 'Реакция': 7, 'Игра на линии': 8, 'Ловкость': 5 }, desc: 'Легендарный.' },
-    { id: 'neuer', name: 'Нойер', emoji: '🇩🇪', pos: 'Вратарь', bonus: { 'Ловля': 7, 'Игра на выходе': 9, 'Выбивание': 7, 'Реакция': 6 }, desc: 'Либеро.' },
-    { id: 'courtois', name: 'Куртуа', emoji: '🇧🇪', pos: 'Вратарь', bonus: { 'Ловля': 8, 'Игра на линии': 8, 'Реакция': 7, 'Физика': 5 }, desc: 'Надёжный.' },
-    { id: 'donnarumma', name: 'Доннарумма', emoji: '🇮🇹', pos: 'Вратарь', bonus: { 'Реакция': 9, 'Ловкость': 7, 'Ловля': 7, 'Игра на линии': 5 }, desc: 'Молодой.' },
-    { id: 'gullit', name: 'Гуллит', emoji: '🇳🇱', pos: 'Полузащитник', bonus: { 'Физика': 8, 'Удар': 6, 'Пасы': 6, 'Голова': 6 }, desc: 'Мощный.' },
-    { id: 'zidane', name: 'Зидан', emoji: '🇫🇷', pos: 'Полузащитник', bonus: { 'Контроль мяча': 10, 'Пасы': 7, 'Дриблинг': 7, 'Удар': 4 }, desc: 'Маэстро.' },
-    { id: 'kaka', name: 'Кака', emoji: '🇧🇷', pos: 'Полузащитник', bonus: { 'Пасы': 8, 'Удар': 6, 'Дриблинг': 6, 'Стамина': 5 }, desc: 'Плеймейкер.' },
-    { id: 'maradona', name: 'Марадона', emoji: '🇦🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 10, 'Контроль мяча': 8, 'Удар': 6, 'Пасы': 5 }, desc: 'Легенда.' },
-    { id: 'pele', name: 'Пеле', emoji: '🇧🇷', pos: 'Нападающий', bonus: { 'Удар': 9, 'Дриблинг': 7, 'Голова': 6, 'Пасы': 5 }, desc: 'Король.' },
-    { id: 'cruyff', name: 'Круифф', emoji: '🇳🇱', pos: 'Нападающий', bonus: { 'Дриблинг': 8, 'Пасы': 7, 'Удар': 6, 'Контроль мяча': 6 }, desc: 'Отец футбола.' }
-  ];
+var TALENTS = [
+  { id: 'none', name: 'Нету', emoji: '❌', pos: 'Любая', hardcore: true, bonus: {}, desc: 'ХАРДКОР! Без бонусов.' },
+  { id: 'ronaldo', name: 'Роналду', emoji: '🇵🇹', pos: 'Нападающий', bonus: { 'Удар': 8, 'Физика': 5, 'Голова': 6, 'Дриблинг': 5 }, desc: 'Феноменальный бомбардир.' },
+  { id: 'messi', name: 'Месси', emoji: '🇦🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 10, 'Пасы': 7, 'Контроль мяча': 8, 'Удар': 4 }, desc: 'Волшебный дриблинг.' },
+  { id: 'neymar', name: 'Неймар', emoji: '🇧🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 9, 'Удар': 5, 'Пасы': 5, 'Слабая нога': 6 }, desc: 'Техничный.' },
+  { id: 'mbappe', name: 'Мбаппе', emoji: '🇫🇷', pos: 'Нападающий', bonus: { 'Удар': 7, 'Дриблинг': 7, 'Физика': 5, 'Стамина': 5 }, desc: 'Скорость.' },
+  { id: 'haaland', name: 'Холанд', emoji: '🇳🇴', pos: 'Нападающий', bonus: { 'Удар': 9, 'Физика': 8, 'Голова': 7, 'Стамина': 4 }, desc: 'Машина голов.' },
+  { id: 'mussiala', name: 'Мусиала', emoji: '🇩🇪', pos: 'Полузащитник', bonus: { 'Дриблинг': 8, 'Пасы': 6, 'Контроль мяча': 7, 'Удар': 4 }, desc: 'Молодой талант.' },
+  { id: 'bellingham', name: 'Беллингем', emoji: '🏴', pos: 'Полузащитник', bonus: { 'Физика': 7, 'Пасы': 6, 'Удар': 5, 'Защита': 5 }, desc: 'Универсал.' },
+  { id: 'vinicius', name: 'Винисиус', emoji: '🇧🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 9, 'Удар': 6, 'Стамина': 4, 'Контроль мяча': 5 }, desc: 'Быстрый вингер.' },
+  { id: 'debruyne', name: 'Де Брёйне', emoji: '🇧🇪', pos: 'Полузащитник', bonus: { 'Пасы': 10, 'Удар': 6, 'Контроль мяча': 6, 'Дриблинг': 4 }, desc: 'Король ассистов.' },
+  { id: 'modric', name: 'Модрич', emoji: '🇭🇷', pos: 'Полузащитник', bonus: { 'Пасы': 8, 'Контроль мяча': 8, 'Дриблинг': 5, 'Стамина': 5 }, desc: 'Маэстро.' },
+  { id: 'salah', name: 'Салах', emoji: '🇪🇬', pos: 'Нападающий', bonus: { 'Удар': 7, 'Дриблинг': 7, 'Стамина': 5, 'Слабая нога': 5 }, desc: 'Король Египта.' },
+  { id: 'lewandowski', name: 'Левандовски', emoji: '🇵🇱', pos: 'Нападающий', bonus: { 'Удар': 9, 'Голова': 7, 'Физика': 6, 'Контроль мяча': 4 }, desc: 'Бомбардир.' },
+  { id: 'vandijk', name: 'Ван Дейк', emoji: '🇳🇱', pos: 'Защитник', bonus: { 'Защита': 9, 'Голова': 8, 'Физика': 7, 'Пасы': 4 }, desc: 'Стена.' },
+  { id: 'ramos', name: 'Рамос', emoji: '🇪🇸', pos: 'Защитник', bonus: { 'Защита': 8, 'Голова': 7, 'Физика': 7, 'Удар': 4 }, desc: 'Жёсткий.' },
+  { id: 'maldini', name: 'Мальдини', emoji: '🇮🇹', pos: 'Защитник', bonus: { 'Защита': 10, 'Пасы': 5, 'Физика': 6, 'Голова': 5 }, desc: 'Легенда.' },
+  { id: 'hakimi', name: 'Хакими', emoji: '🇲🇦', pos: 'Защитник', bonus: { 'Защита': 6, 'Стамина': 8, 'Физика': 6, 'Пасы': 5 }, desc: 'Атакующий.' },
+  { id: 'buffon', name: 'Буффон', emoji: '🇮🇹', pos: 'Вратарь', bonus: { 'Ловля': 9, 'Реакция': 7, 'Игра на линии': 8, 'Ловкость': 5 }, desc: 'Легендарный.' },
+  { id: 'neuer', name: 'Нойер', emoji: '🇩🇪', pos: 'Вратарь', bonus: { 'Ловля': 7, 'Игра на выходе': 9, 'Выбивание': 7, 'Реакция': 6 }, desc: 'Либеро.' },
+  { id: 'courtois', name: 'Куртуа', emoji: '🇧🇪', pos: 'Вратарь', bonus: { 'Ловля': 8, 'Игра на линии': 8, 'Реакция': 7, 'Физика': 5 }, desc: 'Надёжный.' },
+  { id: 'donnarumma', name: 'Доннарумма', emoji: '🇮🇹', pos: 'Вратарь', bonus: { 'Реакция': 9, 'Ловкость': 7, 'Ловля': 7, 'Игра на линии': 5 }, desc: 'Молодой.' },
+  { id: 'gullit', name: 'Гуллит', emoji: '🇳🇱', pos: 'Полузащитник', bonus: { 'Физика': 8, 'Удар': 6, 'Пасы': 6, 'Голова': 6 }, desc: 'Мощный.' },
+  { id: 'zidane', name: 'Зидан', emoji: '🇫🇷', pos: 'Полузащитник', bonus: { 'Контроль мяча': 10, 'Пасы': 7, 'Дриблинг': 7, 'Удар': 4 }, desc: 'Маэстро.' },
+  { id: 'kaka', name: 'Кака', emoji: '🇧🇷', pos: 'Полузащитник', bonus: { 'Пасы': 8, 'Удар': 6, 'Дриблинг': 6, 'Стамина': 5 }, desc: 'Плеймейкер.' },
+  { id: 'maradona', name: 'Марадона', emoji: '🇦🇷', pos: 'Нападающий', bonus: { 'Дриблинг': 10, 'Контроль мяча': 8, 'Удар': 6, 'Пасы': 5 }, desc: 'Легенда.' },
+  { id: 'pele', name: 'Пеле', emoji: '🇧🇷', pos: 'Нападающий', bonus: { 'Удар': 9, 'Дриблинг': 7, 'Голова': 6, 'Пасы': 5 }, desc: 'Король.' },
+  { id: 'cruyff', name: 'Круифф', emoji: '🇳🇱', pos: 'Нападающий', bonus: { 'Дриблинг': 8, 'Пасы': 7, 'Удар': 6, 'Контроль мяча': 6 }, desc: 'Отец футбола.' }
+];
 
-  // ==================== ДОСТИЖЕНИЯ ====================
-  var ACHIEVEMENTS = [
-    { id: 'first_match', name: 'Первый матч', desc: 'Сыграть первый матч', icon: '👟', level: 'easy', rarity: 99, check: function(s) { return s.matchesPlayed >= 1; } },
-    { id: 'first_goal', name: 'Первый гол', desc: 'Забить первый гол', icon: '⚽', level: 'easy', rarity: 95, check: function(s) { return s.goals >= 1; } },
-    { id: 'first_assist', name: 'Первый ассист', desc: 'Отдать первый ассист', icon: '🎯', level: 'easy', rarity: 90, check: function(s) { return s.assists >= 1; } },
-    { id: 'first_win', name: 'Первая победа', desc: 'Выиграть матч', icon: '✌️', level: 'easy', rarity: 92, check: function(s) { return s.careerWins >= 1; } },
-    { id: 'ten_matches', name: '10 матчей', desc: 'Сыграть 10 матчей', icon: '🔟', level: 'easy', rarity: 85, check: function(s) { return s.matchesPlayed >= 10; } },
-    { id: 'first_trophy', name: 'Первый трофей', desc: 'Выиграть трофей', icon: '🏆', level: 'easy', rarity: 75, check: function(s) { return s.totalTrophies >= 1; } },
-    { id: 'five_goals', name: '5 голов', desc: 'Забить 5 голов', icon: '🥅', level: 'easy', rarity: 80, check: function(s) { return s.goals >= 5; } },
-    { id: 'first_season', name: 'Первый сезон', desc: 'Завершить сезон', icon: '📅', level: 'easy', rarity: 70, check: function(s) { return s.season >= 2; } },
-    { id: 'first_money', name: 'Первый капитал', desc: 'Заработать $100K', icon: '💵', level: 'easy', rarity: 65, check: function(s) { return s.money >= 100000; } },
-    { id: 'first_injury', name: 'Первая травма', desc: 'Получить травму', icon: '🏥', level: 'easy', rarity: 55, check: function(s) { return s.injuriesCount >= 1; } },
-    { id: 'first_yellow', name: 'Первая жёлтая', desc: 'Получить жёлтую карточку', icon: '🟨', level: 'easy', rarity: 80, check: function(s) { return s.yellowCards >= 1; } },
-    { id: 'first_sponsor', name: 'Первый спонсор', desc: 'Заключить контракт', icon: '💼', level: 'easy', rarity: 60, check: function(s) { return s.sponsorsSigned >= 1; } },
-    { id: 'hat_trick', name: 'Хет-трик', desc: 'Забить 3+ гола за матч', icon: '🎩', level: 'medium', rarity: 45, check: function(s) { return s.bestMatchGoals >= 3; } },
-    { id: 'fifty_goals', name: '50 голов', desc: 'Забить 50 голов', icon: '🔥', level: 'medium', rarity: 40, check: function(s) { return s.goals >= 50; } },
-    { id: 'ten_assists', name: '10 ассистов', desc: 'Отдать 10 ассистов', icon: '🅰️', level: 'medium', rarity: 50, check: function(s) { return s.assists >= 10; } },
-    { id: 'five_trophies', name: '5 трофеев', desc: 'Выиграть 5 трофеев', icon: '🏅', level: 'medium', rarity: 35, check: function(s) { return s.totalTrophies >= 5; } },
-    { id: 'hundred_matches', name: '100 матчей', desc: 'Сыграть 100 матчей', icon: '💯', level: 'medium', rarity: 30, check: function(s) { return s.matchesPlayed >= 100; } },
-    { id: 'golden_boot', name: 'Золотые Бутсы', desc: 'Получить ЗБ', icon: '👟', level: 'medium', rarity: 25, check: function(s) { return s.trophies.indexOf('golden_boot') >= 0; } },
-    { id: 'champions_league', name: 'Победитель ЛЧ', desc: 'Выиграть ЛЧ', icon: '⭐', level: 'medium', rarity: 20, check: function(s) { return s.trophies.indexOf('champions_league') >= 0; } },
-    { id: 'rep_80', name: 'Уважаемый', desc: 'Репутация 80+', icon: '😇', level: 'medium', rarity: 28, check: function(s) { return s.reputation >= 80; } },
-    { id: 'millionaire', name: 'Миллионер', desc: 'Заработать $1M', icon: '💰', level: 'medium', rarity: 30, check: function(s) { return s.money >= 1000000; } },
-    { id: 'invest_win', name: 'Удачный инвестор', desc: 'Удачно вложить', icon: '📈', level: 'medium', rarity: 40, check: function(s) { return s.investWins >= 1; } },
-    { id: 'injury_pro', name: 'Реабилитация', desc: 'Вернуться после травмы', icon: '💪', level: 'medium', rarity: 45, check: function(s) { return s.recoveredFromInjury === true; } },
-    { id: 'ten_yellows', name: '10 жёлтых', desc: '10 жёлтых карточек', icon: '🟨', level: 'medium', rarity: 35, check: function(s) { return s.yellowCards >= 10; } },
-    { id: 'star_sponsor', name: 'Звёздный спонсор', desc: 'Контракт с топ-брендом', icon: '⭐', level: 'medium', rarity: 25, check: function(s) { return s.sponsorLevel >= 3; } },
-    { id: 'golden_ball', name: 'Золотой Мяч', desc: 'Получить ЗМ', icon: '⚽', level: 'hard', rarity: 8, check: function(s) { return s.trophies.indexOf('golden_ball') >= 0; } },
-    { id: 'world_cup', name: 'Чемпион Мира', desc: 'Выиграть ЧМ', icon: '🌍', level: 'hard', rarity: 5, check: function(s) { return s.trophies.indexOf('world_cup') >= 0; } },
-    { id: 'golden_glove', name: 'Золотая Перчатка', desc: 'Получить ЗП', icon: '🧤', level: 'hard', rarity: 3, check: function(s) { return s.trophies.indexOf('golden_glove') >= 0; } },
-    { id: 'twenty_trophies', name: '20 трофеев', desc: '20 трофеев', icon: '🏆', level: 'hard', rarity: 4, check: function(s) { return s.totalTrophies >= 20; } },
-    { id: 'hundred_goals', name: '100 голов', desc: 'Забить 100 голов', icon: '💯', level: 'hard', rarity: 6, check: function(s) { return s.goals >= 100; } },
-    { id: 'rep_100', name: 'Легенда', desc: 'Репутация 100', icon: '👑', level: 'hard', rarity: 2, check: function(s) { return s.reputation >= 100; } },
-    { id: 'all_4_cups', name: 'Все трофеи', desc: 'ЧМ, ЛЧ, Кубок и Чемпионат', icon: '🌟', level: 'hard', rarity: 1, check: function(s) { return s.trophies.indexOf('world_cup') >= 0 && s.trophies.indexOf('champions_league') >= 0 && s.trophies.indexOf('national_cup') >= 0 && s.trophies.indexOf('league') >= 0; } },
-    { id: 'ten_million', name: '10 миллионов', desc: 'Заработать $10M', icon: '💎', level: 'hard', rarity: 5, check: function(s) { return s.money >= 10000000; } },
-    { id: 'red_card', name: 'Удаление', desc: 'Получить красную карточку', icon: '🟥', level: 'hard', rarity: 15, check: function(s) { return s.redCards >= 1; } },
-    { id: 'hardcore_25', name: 'Хардкор 25', desc: '25 сезонов', icon: '☠️', level: 'hard', rarity: 0.5, check: function(s) { return s.season > 25; } },
-    { id: 'hardcore_no_bonus', name: 'Без таланта', desc: 'Карьера без бонусов 10+ сезонов', icon: '🚫', level: 'hard', rarity: 0.1, check: function(s) { return s.talentId === 'none' && s.season >= 10; } },
-    { id: 'perfect_season', name: 'Идеальный сезон', desc: '50+ G+A за сезон', icon: '💎', level: 'hard', rarity: 3, check: function(s) { return (s.seasonGoals + s.seasonAssists) >= 50; } }
-  ];
+// ==================== ДОСТИЖЕНИЯ ====================
+var ACHIEVEMENTS = [
+  { id: 'first_match', name: 'Первый матч', desc: 'Сыграть первый матч', icon: '👟', level: 'easy', rarity: 99, check: function(s) { return s.matchesPlayed >= 1; } },
+  { id: 'first_goal', name: 'Первый гол', desc: 'Забить первый гол', icon: '⚽', level: 'easy', rarity: 95, check: function(s) { return s.goals >= 1; } },
+  { id: 'first_assist', name: 'Первый ассист', desc: 'Отдать первый ассист', icon: '🎯', level: 'easy', rarity: 90, check: function(s) { return s.assists >= 1; } },
+  { id: 'first_win', name: 'Первая победа', desc: 'Выиграть матч', icon: '✌️', level: 'easy', rarity: 92, check: function(s) { return s.careerWins >= 1; } },
+  { id: 'ten_matches', name: '10 матчей', desc: 'Сыграть 10 матчей', icon: '🔟', level: 'easy', rarity: 85, check: function(s) { return s.matchesPlayed >= 10; } },
+  { id: 'first_trophy', name: 'Первый трофей', desc: 'Выиграть трофей', icon: '🏆', level: 'easy', rarity: 75, check: function(s) { return s.totalTrophies >= 1; } },
+  { id: 'five_goals', name: '5 голов', desc: 'Забить 5 голов', icon: '🥅', level: 'easy', rarity: 80, check: function(s) { return s.goals >= 5; } },
+  { id: 'first_season', name: 'Первый сезон', desc: 'Завершить сезон', icon: '📅', level: 'easy', rarity: 70, check: function(s) { return s.season >= 2; } },
+  { id: 'first_money', name: 'Первый капитал', desc: 'Заработать $100K', icon: '💵', level: 'easy', rarity: 65, check: function(s) { return s.money >= 100000; } },
+  { id: 'first_injury', name: 'Первая травма', desc: 'Получить травму', icon: '🏥', level: 'easy', rarity: 55, check: function(s) { return s.injuriesCount >= 1; } },
+  { id: 'first_yellow', name: 'Первая жёлтая', desc: 'Получить жёлтую', icon: '🟨', level: 'easy', rarity: 80, check: function(s) { return s.yellowCards >= 1; } },
+  { id: 'first_sponsor', name: 'Первый спонсор', desc: 'Заключить контракт', icon: '💼', level: 'easy', rarity: 60, check: function(s) { return s.sponsorsSigned >= 1; } },
+  { id: 'hat_trick', name: 'Хет-трик', desc: 'Забить 3+ гола за матч', icon: '🎩', level: 'medium', rarity: 45, check: function(s) { return s.bestMatchGoals >= 3; } },
+  { id: 'fifty_goals', name: '50 голов', desc: 'Забить 50 голов', icon: '🔥', level: 'medium', rarity: 40, check: function(s) { return s.goals >= 50; } },
+  { id: 'ten_assists', name: '10 ассистов', desc: 'Отдать 10 ассистов', icon: '🅰️', level: 'medium', rarity: 50, check: function(s) { return s.assists >= 10; } },
+  { id: 'five_trophies', name: '5 трофеев', desc: 'Выиграть 5 трофеев', icon: '🏅', level: 'medium', rarity: 35, check: function(s) { return s.totalTrophies >= 5; } },
+  { id: 'hundred_matches', name: '100 матчей', desc: 'Сыграть 100 матчей', icon: '💯', level: 'medium', rarity: 30, check: function(s) { return s.matchesPlayed >= 100; } },
+  { id: 'golden_boot', name: 'Золотые Бутсы', desc: 'Получить ЗБ', icon: '👟', level: 'medium', rarity: 25, check: function(s) { return s.trophies.indexOf('golden_boot') >= 0; } },
+  { id: 'champions_league', name: 'Победитель ЛЧ', desc: 'Выиграть ЛЧ', icon: '⭐', level: 'medium', rarity: 20, check: function(s) { return s.trophies.indexOf('champions_league') >= 0; } },
+  { id: 'rep_80', name: 'Уважаемый', desc: 'Репутация 80+', icon: '😇', level: 'medium', rarity: 28, check: function(s) { return s.reputation >= 80; } },
+  { id: 'millionaire', name: 'Миллионер', desc: 'Заработать $1M', icon: '💰', level: 'medium', rarity: 30, check: function(s) { return s.money >= 1000000; } },
+  { id: 'invest_win', name: 'Удачный инвестор', desc: 'Удачно вложить', icon: '📈', level: 'medium', rarity: 40, check: function(s) { return s.investWins >= 1; } },
+  { id: 'injury_pro', name: 'Реабилитация', desc: 'Вернуться после травмы', icon: '💪', level: 'medium', rarity: 45, check: function(s) { return s.recoveredFromInjury === true; } },
+  { id: 'ten_yellows', name: '10 жёлтых', desc: '10 жёлтых карточек', icon: '🟨', level: 'medium', rarity: 35, check: function(s) { return s.yellowCards >= 10; } },
+  { id: 'star_sponsor', name: 'Звёздный спонсор', desc: 'Топ-спонсор', icon: '⭐', level: 'medium', rarity: 25, check: function(s) { return s.sponsorLevel >= 3; } },
+  { id: 'prime', name: 'Прайм', desc: 'Войти в прайм', icon: '🔥', level: 'medium', rarity: 40, check: function(s) { return s.wasInPrime === true; } },
+  { id: 'golden_ball', name: 'Золотой Мяч', desc: 'Получить ЗМ', icon: '⚽', level: 'hard', rarity: 8, check: function(s) { return s.trophies.indexOf('golden_ball') >= 0; } },
+  { id: 'world_cup', name: 'Чемпион Мира', desc: 'Выиграть ЧМ', icon: '🌍', level: 'hard', rarity: 5, check: function(s) { return s.trophies.indexOf('world_cup') >= 0; } },
+  { id: 'golden_glove', name: 'Золотая Перчатка', desc: 'Получить ЗП', icon: '🧤', level: 'hard', rarity: 3, check: function(s) { return s.trophies.indexOf('golden_glove') >= 0; } },
+  { id: 'twenty_trophies', name: '20 трофеев', desc: '20 трофеев', icon: '🏆', level: 'hard', rarity: 4, check: function(s) { return s.totalTrophies >= 20; } },
+  { id: 'hundred_goals', name: '100 голов', desc: 'Забить 100 голов', icon: '💯', level: 'hard', rarity: 6, check: function(s) { return s.goals >= 100; } },
+  { id: 'rep_100', name: 'Легенда', desc: 'Репутация 100', icon: '👑', level: 'hard', rarity: 2, check: function(s) { return s.reputation >= 100; } },
+  { id: 'all_4_cups', name: 'Все трофеи', desc: 'ЧМ, ЛЧ, Кубок и Чемпионат', icon: '🌟', level: 'hard', rarity: 1, check: function(s) { return s.trophies.indexOf('world_cup') >= 0 && s.trophies.indexOf('champions_league') >= 0 && s.trophies.indexOf('national_cup') >= 0 && s.trophies.indexOf('league') >= 0; } },
+  { id: 'ten_million', name: '10 миллионов', desc: '$10M', icon: '💎', level: 'hard', rarity: 5, check: function(s) { return s.money >= 10000000; } },
+  { id: 'red_card', name: 'Удаление', desc: 'Красная карточка', icon: '🟥', level: 'hard', rarity: 15, check: function(s) { return s.redCards >= 1; } },
+  { id: 'lucky_ovr', name: 'Счастливчик', desc: '+1 OVR за матч (0.5%)', icon: '🍀', level: 'hard', rarity: 0.5, check: function(s) { return s.luckyOvr === true; } },
+  { id: 'hardcore_25', name: 'Хардкор 25', desc: '25 сезонов', icon: '☠️', level: 'hard', rarity: 0.5, check: function(s) { return s.season > 25; } },
+  { id: 'hardcore_no_bonus', name: 'Без таланта', desc: '10+ сезонов без бонусов', icon: '🚫', level: 'hard', rarity: 0.1, check: function(s) { return s.talentId === 'none' && s.season >= 10; } },
+  { id: 'perfect_season', name: 'Идеальный сезон', desc: '50+ G+A за сезон', icon: '💎', level: 'hard', rarity: 3, check: function(s) { return (s.seasonGoals + s.seasonAssists) >= 50; } }
+];
 
-  // ==================== КОММЕНТАРИИ ====================
-  var COMMENT_TEMPLATES = {
-    positive: ['Это гений!', 'Лучший игрок сезона!', 'ГОАТ!', 'Невероятно!', 'Красава!', 'Как он это делает?!', 'Топчик!', 'Легенда!', 'Огонь!', 'Мастер!', 'Вот это уровень!', 'Красота!', 'Браво!', 'Восхитительно!', 'Феномен!', 'Мужик!', 'Уважение!', 'Снимаю шляпу!', 'Вот это игра!', 'Бомба!', 'Мне нравится!', 'Так держать!', 'Продолжай!', 'Верю в него!', 'Будущий ЗМ!', 'Это Мбаппе 2.0!', 'Новый Месси!', 'Роналду нервно курит!', 'Топ-1 в мире!', 'Сколько можно забивать?!', 'Он машина!', 'Этот парень тащит!', 'Красавчик!', 'Сын маминой подруги!', 'Отец!', 'Гол года!', 'Как Месси в лучшие годы!', 'Вот за это я люблю футбол!', 'Маэстро!', 'Братан красавец!'],
-    neutral: ['Норм играет.', 'Неплохо.', 'Средне.', 'Мог бы лучше.', 'Такое себе.', 'Ну как-то так.', 'Ожидал большего.', 'Пока не топ.', 'Есть куда расти.', 'Обычный игрок.', 'Не плохо, не хорошо.', 'Средненько.', 'Смотрится нормально.', 'Бывает и хуже.', 'Ничего особенного.', 'Стабильно.', 'Как обычно.', 'Ни рыба ни мясо.', 'Хз, вроде норм.', 'Не удивил.', 'Посмотрим дальше.', 'Время покажет.', 'Пока рано судить.', 'Не хуже других.', 'Есть шансы.', 'На уровне.'],
-    negative: ['Слабовато.', 'Ну и ну...', 'Позор!', 'Это не футбол!', 'Ужасно.', 'Разочарование.', 'Как так можно?!', 'Продать его!', 'Позорище!', 'Не уровень клуба.', 'Скамейка плачет.', 'Он вообще играл?', 'Может, в любители?', 'Это провал.', 'Хуже некуда.', 'Катастрофа.', 'Я разочарован.', 'Так нельзя.', 'Беда.', 'Мда...', 'Что за ерунда?', 'Он вообще футболист?', 'Отдайте его в аренду.', 'Он не тянет.', 'Это несерьёзно.'],
-    funny: ['Он вообще играл? 😂', 'Судья куплен!', 'Мяч — его лучший друг!', 'Он меня вдохновил — пойду в футбол!', 'Мама, я футболист!', 'Это лучше, чем сериал.', 'Смотрю как реалити-шоу.', 'Где VAR?!', 'Продаю почку за его автограф!', 'Ставлю на него в ФНТ!', 'Скачаю The Goat, чтобы повторить!', 'Где мой футбольный менеджер?!', 'Хочу так же!', 'Он играет лучше меня в FIFA!', 'Это несправедливо!', 'Дайте ему ЗМ прямо сейчас!', 'Сколько ему заплатили?', 'Он мне снится!', 'Сделал его в футболе!', 'Обожаю!', 'Он и мой кот — мои кумиры.', 'Мой пёс играет лучше.', 'Где можно купить его футболку?!', 'Пойду на стадион!', 'Он как из другого мира!']
-  };
+// ==================== КОММЕНТАРИИ ====================
+var COMMENT_TEMPLATES = {
+  positive: ['Это гений!', 'Лучший игрок сезона!', 'ГОАТ!', 'Невероятно!', 'Красава!', 'Как он это делает?!', 'Топчик!', 'Легенда!', 'Огонь!', 'Мастер!', 'Вот это уровень!', 'Красота!', 'Браво!', 'Восхитительно!', 'Феномен!', 'Мужик!', 'Уважение!', 'Снимаю шляпу!', 'Вот это игра!', 'Бомба!', 'Мне нравится!', 'Так держать!', 'Продолжай!', 'Верю в него!', 'Будущий ЗМ!', 'Это Мбаппе 2.0!', 'Новый Месси!', 'Роналду нервно курит!', 'Топ-1 в мире!', 'Сколько можно забивать?!', 'Он машина!', 'Этот парень тащит!', 'Красавчик!', 'Сын маминой подруги!', 'Отец!', 'Гол года!', 'Как Месси в лучшие годы!', 'Вот за это я люблю футбол!', 'Маэстро!', 'Братан красавец!'],
+  neutral: ['Норм играет.', 'Неплохо.', 'Средне.', 'Мог бы лучше.', 'Такое себе.', 'Ну как-то так.', 'Ожидал большего.', 'Пока не топ.', 'Есть куда расти.', 'Обычный игрок.', 'Не плохо, не хорошо.', 'Средненько.', 'Смотрится нормально.', 'Бывает и хуже.', 'Ничего особенного.', 'Стабильно.', 'Как обычно.', 'Ни рыба ни мясо.', 'Хз, вроде норм.', 'Не удивил.', 'Посмотрим дальше.', 'Время покажет.', 'Пока рано судить.', 'Не хуже других.', 'Есть шансы.', 'На уровне.'],
+  negative: ['Слабовато.', 'Ну и ну...', 'Позор!', 'Это не футбол!', 'Ужасно.', 'Разочарование.', 'Как так можно?!', 'Продать его!', 'Позорище!', 'Не уровень клуба.', 'Скамейка плачет.', 'Он вообще играл?', 'Может, в любители?', 'Это провал.', 'Хуже некуда.', 'Катастрофа.', 'Я разочарован.', 'Так нельзя.', 'Беда.', 'Мда...', 'Что за ерунда?', 'Он вообще футболист?', 'Отдайте его в аренду.', 'Он не тянет.', 'Это несерьёзно.'],
+  funny: ['Он вообще играл? 😂', 'Судья куплен!', 'Мяч — его лучший друг!', 'Он меня вдохновил — пойду в футбол!', 'Мама, я футболист!', 'Это лучше, чем сериал.', 'Смотрю как реалити-шоу.', 'Где VAR?!', 'Продаю почку за его автограф!', 'Ставлю на него в ФНТ!', 'Скачаю The Goat, чтобы повторить!', 'Где мой футбольный менеджер?!', 'Хочу так же!', 'Он играет лучше меня в FIFA!', 'Это несправедливо!', 'Дайте ему ЗМ прямо сейчас!', 'Сколько ему заплатили?', 'Он мне снится!', 'Сделал его в футболе!', 'Обожаю!', 'Он и мой кот — мои кумиры.', 'Мой пёс играет лучше.', 'Где можно купить его футболку?!', 'Пойду на стадион!', 'Он как из другого мира!']
+};
 
-  var COMMENT_NAMES = ['Фан№1', 'Иван', 'Дмитрий', 'Сергей', 'Алексей', 'Мария', 'Ольга', 'Николай', 'Спортик', 'ГоатФан', 'Месси_Бро', 'Роналду_Топ', 'Хейтерок', 'РеалФан', 'БарсаФан', 'ЛФЛ_Боец', 'Тренер_Год', 'Юный_Болельщик', 'Егор', 'Влад', 'Костя', 'Александр', 'Тимур', 'Макар', 'Ваня', 'Кирилл', 'Артём', 'Данил', 'Максим', 'Рома', 'Лена', 'Катя', 'Аня', 'Даша', 'Соня', 'Настя', 'Спорт_Аналитик', 'Эксперт'];
+var COMMENT_NAMES = ['Фан№1', 'Иван', 'Дмитрий', 'Сергей', 'Алексей', 'Мария', 'Ольга', 'Николай', 'Спортик', 'ГоатФан', 'Месси_Бро', 'Роналду_Топ', 'Хейтерок', 'РеалФан', 'БарсаФан', 'ЛФЛ_Боец', 'Тренер_Год', 'Юный_Болельщик', 'Егор', 'Влад', 'Костя', 'Александр', 'Тимур', 'Макар', 'Ваня', 'Кирилл', 'Артём', 'Данил', 'Максим', 'Рома', 'Лена', 'Катя', 'Аня', 'Даша', 'Соня', 'Настя', 'Спорт_Аналитик', 'Эксперт'];
 
-  function generateComments(count) {
-    var comments = [];
-    var types = ['positive', 'positive', 'neutral', 'funny', 'negative'];
-    for (var i = 0; i < count; i++) {
-      var type = types[Math.floor(Math.random() * types.length)];
-      var pool = COMMENT_TEMPLATES[type];
-      comments.push({
-        name: COMMENT_NAMES[Math.floor(Math.random() * COMMENT_NAMES.length)],
-        text: pool[Math.floor(Math.random() * pool.length)],
-        type: type
-      });
+function generateComments(count, context) {
+  var comments = [];
+  for (var i = 0; i < count; i++) {
+    var type;
+    if (context) {
+      var gA = (context.goals || 0) + (context.assists || 0);
+      if (gA >= 20 || (context.trophies || 0) >= 3) type = Math.random() < 0.8 ? 'positive' : 'funny';
+      else if (gA >= 10) type = Math.random() < 0.5 ? 'positive' : 'neutral';
+      else if (gA >= 3) type = Math.random() < 0.5 ? 'neutral' : 'positive';
+      else type = Math.random() < 0.4 ? 'negative' : (Math.random() < 0.5 ? 'neutral' : 'funny');
+    } else {
+      var types = ['positive', 'positive', 'neutral', 'funny', 'negative'];
+      type = types[Math.floor(Math.random() * types.length)];
     }
-    return comments;
+    var pool = COMMENT_TEMPLATES[type];
+    comments.push({
+      name: COMMENT_NAMES[Math.floor(Math.random() * COMMENT_NAMES.length)],
+      text: pool[Math.floor(Math.random() * pool.length)],
+      type: type
+    });
   }
+  return comments;
+}
 
-  // ==================== КЛУБЫ ====================
-  var WEAK_CLUBS = [
-    { name: 'Лестер Сити', rating: 62 }, { name: 'Саутгемптон', rating: 63 }, { name: 'Эвертон', rating: 64 },
-    { name: 'Вест Хэм', rating: 65 }, { name: 'Вулверхэмптон', rating: 66 }, { name: 'Кристал Пэлас', rating: 67 },
-    { name: 'Брентфорд', rating: 68 }, { name: 'Фулхэм', rating: 69 }, { name: 'Борнмут', rating: 70 },
-    { name: 'Ноттингем Форест', rating: 71 }, { name: 'Дженоа', rating: 72 }, { name: 'Кальяри', rating: 73 },
-    { name: 'Удинезе', rating: 74 }, { name: 'Торино', rating: 75 }, { name: 'Болонья', rating: 76 },
-    { name: 'Монца', rating: 77 }, { name: 'Фрайбург', rating: 78 }, { name: 'Аугсбург', rating: 79 },
-    { name: 'Вердер', rating: 80 }, { name: 'Вольфсбург', rating: 81 }, { name: 'Майнц', rating: 82 },
-    { name: 'Хоффенхайм', rating: 83 }, { name: 'Ренн', rating: 84 }, { name: 'Ницца', rating: 85 }, { name: 'Ланс', rating: 86 }
-  ];
+// ==================== КЛУБЫ ====================
+var WEAK_CLUBS = [
+  { name: 'Лестер Сити', rating: 62 }, { name: 'Саутгемптон', rating: 63 }, { name: 'Эвертон', rating: 64 },
+  { name: 'Вест Хэм', rating: 65 }, { name: 'Вулверхэмптон', rating: 66 }, { name: 'Кристал Пэлас', rating: 67 },
+  { name: 'Брентфорд', rating: 68 }, { name: 'Фулхэм', rating: 69 }, { name: 'Борнмут', rating: 70 },
+  { name: 'Ноттингем Форест', rating: 71 }, { name: 'Дженоа', rating: 72 }, { name: 'Кальяри', rating: 73 },
+  { name: 'Удинезе', rating: 74 }, { name: 'Торино', rating: 75 }, { name: 'Болонья', rating: 76 },
+  { name: 'Монца', rating: 77 }, { name: 'Фрайбург', rating: 78 }, { name: 'Аугсбург', rating: 79 },
+  { name: 'Вердер', rating: 80 }, { name: 'Вольфсбург', rating: 81 }, { name: 'Майнц', rating: 82 },
+  { name: 'Хоффенхайм', rating: 83 }, { name: 'Ренн', rating: 84 }, { name: 'Ницца', rating: 85 }, { name: 'Ланс', rating: 86 }
+];
 
-  var TOP_CLUBS = [
-    { name: 'Реал Мадрид', rating: 96 }, { name: 'Барселона', rating: 95 }, { name: 'Манчестер Сити', rating: 95 },
-    { name: 'Ливерпуль', rating: 94 }, { name: 'Бавария', rating: 94 }, { name: 'ПСЖ', rating: 93 },
-    { name: 'Арсенал', rating: 92 }, { name: 'Интер', rating: 92 }, { name: 'Милан', rating: 91 },
-    { name: 'Ювентус', rating: 90 }, { name: 'Челси', rating: 90 }, { name: 'Манчестер Юнайтед', rating: 89 },
-    { name: 'Атлетико', rating: 89 }, { name: 'Боруссия Дортмунд', rating: 88 }, { name: 'Наполи', rating: 88 },
-    { name: 'Тоттенхэм', rating: 87 }, { name: 'Рома', rating: 87 }, { name: 'Аякс', rating: 86 },
-    { name: 'Порту', rating: 86 }, { name: 'Бенфика', rating: 85 }, { name: 'Спортинг', rating: 85 },
-    { name: 'Атлетик Бильбао', rating: 84 }, { name: 'Вильярреал', rating: 84 }, { name: 'Реал Сосьедад', rating: 83 },
-    { name: 'Байер Леверкузен', rating: 93 }
-  ];
+var TOP_CLUBS = [
+  { name: 'Реал Мадрид', rating: 96 }, { name: 'Барселона', rating: 95 }, { name: 'Манчестер Сити', rating: 95 },
+  { name: 'Ливерпуль', rating: 94 }, { name: 'Бавария', rating: 94 }, { name: 'ПСЖ', rating: 93 },
+  { name: 'Арсенал', rating: 92 }, { name: 'Интер', rating: 92 }, { name: 'Милан', rating: 91 },
+  { name: 'Ювентус', rating: 90 }, { name: 'Челси', rating: 90 }, { name: 'Манчестер Юнайтед', rating: 89 },
+  { name: 'Атлетико', rating: 89 }, { name: 'Боруссия Дортмунд', rating: 88 }, { name: 'Наполи', rating: 88 },
+  { name: 'Тоттенхэм', rating: 87 }, { name: 'Рома', rating: 87 }, { name: 'Аякс', rating: 86 },
+  { name: 'Порту', rating: 86 }, { name: 'Бенфика', rating: 85 }, { name: 'Спортинг', rating: 85 },
+  { name: 'Атлетик Бильбао', rating: 84 }, { name: 'Вильярреал', rating: 84 }, { name: 'Реал Сосьедад', rating: 83 },
+  { name: 'Байер Леверкузен', rating: 93 }
+];
 
-  var ALL_CLUBS = WEAK_CLUBS.concat(TOP_CLUBS);
+var ALL_CLUBS = WEAK_CLUBS.concat(TOP_CLUBS);
 
-  var ATTRS_FIELD = {
-    'Защитник':     { 'Слабая нога': 45, 'Стамина': 60, 'Удар': 40, 'Пасы': 55, 'Дриблинг': 45, 'Голова': 65, 'Защита': 70, 'Физика': 65, 'Контроль мяча': 50 },
-    'Полузащитник': { 'Слабая нога': 50, 'Стамина': 65, 'Удар': 55, 'Пасы': 70, 'Дриблинг': 60, 'Голова': 50, 'Защита': 55, 'Физика': 60, 'Контроль мяча': 65 },
-    'Нападающий':   { 'Слабая нога': 55, 'Стамина': 60, 'Удар': 70, 'Пасы': 50, 'Дриблинг': 65, 'Голова': 60, 'Защита': 35, 'Физика': 55, 'Контроль мяча': 65 }
-  };
+var ATTRS_FIELD = {
+  'Защитник':     { 'Слабая нога': 45, 'Стамина': 60, 'Удар': 40, 'Пасы': 55, 'Дриблинг': 45, 'Голова': 65, 'Защита': 70, 'Физика': 65, 'Контроль мяча': 50 },
+  'Полузащитник': { 'Слабая нога': 50, 'Стамина': 65, 'Удар': 55, 'Пасы': 70, 'Дриблинг': 60, 'Голова': 50, 'Защита': 55, 'Физика': 60, 'Контроль мяча': 65 },
+  'Нападающий':   { 'Слабая нога': 55, 'Стамина': 60, 'Удар': 70, 'Пасы': 50, 'Дриблинг': 65, 'Голова': 60, 'Защита': 35, 'Физика': 55, 'Контроль мяча': 65 }
+};
 
-  var ATTRS_GK = {
-    'Ловкость': 60, 'Ловля': 65, 'Выбивание': 55, 'Игра на линии': 65,
-    'Игра на выходе': 55, 'Реакция': 62, 'Стамина': 55, 'Физика': 60, 'Контроль мяча': 50
-  };
+var ATTRS_GK = {
+  'Ловкость': 60, 'Ловля': 65, 'Выбивание': 55, 'Игра на линии': 65,
+  'Игра на выходе': 55, 'Реакция': 62, 'Стамина': 55, 'Физика': 60, 'Контроль мяча': 50
+};
 
-  var ATTR_KEYS_FIELD = ['Слабая нога', 'Стамина', 'Удар', 'Пасы', 'Дриблинг', 'Голова', 'Защита', 'Физика', 'Контроль мяча'];
-  var ATTR_KEYS_GK = ['Ловкость', 'Ловля', 'Выбивание', 'Игра на линии', 'Игра на выходе', 'Реакция', 'Стамина', 'Физика', 'Контроль мяча'];
+var ATTR_KEYS_FIELD = ['Слабая нога', 'Стамина', 'Удар', 'Пасы', 'Дриблинг', 'Голова', 'Защита', 'Физика', 'Контроль мяча'];
+var ATTR_KEYS_GK = ['Ловкость', 'Ловля', 'Выбивание', 'Игра на линии', 'Игра на выходе', 'Реакция', 'Стамина', 'Физика', 'Контроль мяча'];
 
-  var POSITION_HINTS = {
-    'Вратарь':      { key: ['Ловля', 'Реакция', 'Игра на линии', 'Ловкость'], desc: 'Вратарю важны ловля, реакция, игра на линии и ловкость.' },
-    'Защитник':     { key: ['Защита', 'Голова', 'Физика', 'Стамина'], desc: 'Защитнику важны защита, голова, физика и стамина.' },
-    'Полузащитник': { key: ['Пасы', 'Дриблинг', 'Контроль мяча', 'Стамина'], desc: 'Полузащитнику важны пасы, дриблинг, контроль и стамина.' },
-    'Нападающий':   { key: ['Удар', 'Дриблинг', 'Контроль мяча', 'Голова'], desc: 'Нападающему важны удар, дриблинг, контроль и голова.' }
-  };
+var POSITION_HINTS = {
+  'Вратарь':      { key: ['Ловля', 'Реакция', 'Игра на линии', 'Ловкость'], desc: 'Вратарю важны ловля, реакция, игра на линии и ловкость.' },
+  'Защитник':     { key: ['Защита', 'Голова', 'Физика', 'Стамина'], desc: 'Защитнику важны защита, голова, физика и стамина.' },
+  'Полузащитник': { key: ['Пасы', 'Дриблинг', 'Контроль мяча', 'Стамина'], desc: 'Полузащитнику важны пасы, дриблинг, контроль и стамина.' },
+  'Нападающий':   { key: ['Удар', 'Дриблинг', 'Контроль мяча', 'Голова'], desc: 'Нападающему важны удар, дриблинг, контроль и голова.' }
+};
 
-  var TROPHY_DEFS = {
-    'league': { name: 'Чемпионат', icon: '🏆' },
-    'national_cup': { name: 'Нац. кубок', icon: '🏆' },
-    'champions_league': { name: 'ЛЧ', icon: '🏆' },
-    'europa_league': { name: 'ЛЕ', icon: '🏆' },
-    'conference_league': { name: 'ЛК', icon: '🏆' },
-    'super_cup': { name: 'Суперкубок', icon: '🏆' },
-    'club_world_cup': { name: 'Клубный ЧМ', icon: '🌍' },
-    'world_cup': { name: 'Чемпионат Мира', icon: '🌍' },
-    'euro_cup': { name: 'Чемпионат Европы', icon: '🇪🇺' },
-    'copa_america': { name: 'Кубок Америки', icon: '🌎' },
-    'africa_cup': { name: 'Кубок Африки', icon: '🌍' },
-    'asian_cup': { name: 'Кубок Азии', icon: '🌏' },
-    'golden_ball': { name: 'Золотой Мяч', icon: '⚽' },
-    'golden_boot': { name: 'Золотые Бутсы', icon: '👟' },
-    'golden_glove': { name: 'Золотая Перчатка', icon: '🧤' }
-  };
+var TROPHY_DEFS = {
+  'league': { name: 'Чемпионат', icon: '🏆' },
+  'national_cup': { name: 'Нац. кубок', icon: '🏆' },
+  'champions_league': { name: 'ЛЧ', icon: '🏆' },
+  'europa_league': { name: 'ЛЕ', icon: '🏆' },
+  'conference_league': { name: 'ЛК', icon: '🏆' },
+  'super_cup': { name: 'Суперкубок', icon: '🏆' },
+  'club_world_cup': { name: 'Клубный ЧМ', icon: '🌍' },
+  'world_cup': { name: 'Чемпионат Мира', icon: '🌍' },
+  'euro_cup': { name: 'Чемпионат Европы', icon: '🇪🇺' },
+  'copa_america': { name: 'Кубок Америки', icon: '🌎' },
+  'africa_cup': { name: 'Кубок Африки', icon: '🌍' },
+  'asian_cup': { name: 'Кубок Азии', icon: '🌏' },
+  'golden_ball': { name: 'Золотой Мяч', icon: '⚽' },
+  'golden_boot': { name: 'Золотые Бутсы', icon: '👟' },
+  'golden_glove': { name: 'Золотая Перчатка', icon: '🧤' }
+};
 
-  var ATTR_DISPLAY = {
-    'Слабая нога': 'Слабая нога', 'Стамина': 'Стамина', 'Удар': 'Удар', 'Пасы': 'Пасы',
-    'Дриблинг': 'Дриблинг', 'Голова': 'Голова', 'Защита': 'Защита', 'Физика': 'Физика',
-    'Контроль мяча': 'Контроль мяча', 'Ловкость': 'Ловкость', 'Ловля': 'Ловля',
-    'Выбивание': 'Выбивание', 'Игра на линии': 'Игра на линии', 'Игра на выходе': 'Игра на выходе',
-    'Реакция': 'Реакция'
-  };
+var ATTR_DISPLAY = {
+  'Слабая нога': 'Слабая нога', 'Стамина': 'Стамина', 'Удар': 'Удар', 'Пасы': 'Пасы',
+  'Дриблинг': 'Дриблинг', 'Голова': 'Голова', 'Защита': 'Защита', 'Физика': 'Физика',
+  'Контроль мяча': 'Контроль мяча', 'Ловкость': 'Ловкость', 'Ловля': 'Ловля',
+  'Выбивание': 'Выбивание', 'Игра на линии': 'Игра на линии', 'Игра на выходе': 'Игра на выходе',
+  'Реакция': 'Реакция'
+};
 
-  var TOP_PLAYERS_POOL = [
-    { name: 'К. Роналду', club: 'Реал Мадрид', pos: 'Нападающий', ovrBase: 90 },
-    { name: 'Л. Месси', club: 'Интер Майами', pos: 'Нападающий', ovrBase: 89 },
-    { name: 'К. Мбаппе', club: 'Реал Мадрид', pos: 'Нападающий', ovrBase: 92 },
-    { name: 'Э. Холанд', club: 'Манчестер Сити', pos: 'Нападающий', ovrBase: 92 },
-    { name: 'Д. Беллингем', club: 'Реал Мадрид', pos: 'Полузащитник', ovrBase: 90 },
-    { name: 'Винисиус', club: 'Реал Мадрид', pos: 'Нападающий', ovrBase: 91 },
-    { name: 'Д. Мусиала', club: 'Бавария', pos: 'Полузащитник', ovrBase: 87 },
-    { name: 'Ф. Вирц', club: 'Байер Леверкузен', pos: 'Полузащитник', ovrBase: 88 },
-    { name: 'Х. Кейн', club: 'Бавария', pos: 'Нападающий', ovrBase: 90 },
-    { name: 'Л. Ямал', club: 'Барселона', pos: 'Нападающий', ovrBase: 88 },
-    { name: 'Р. Левандовски', club: 'Барселона', pos: 'Нападающий', ovrBase: 88 },
-    { name: 'М. Салах', club: 'Ливерпуль', pos: 'Нападающий', ovrBase: 89 },
-    { name: 'Б. Фернандеш', club: 'Манчестер Юнайтед', pos: 'Полузащитник', ovrBase: 87 },
-    { name: 'Х. Киммих', club: 'Бавария', pos: 'Полузащитник', ovrBase: 87 },
-    { name: 'О. Дембеле', club: 'ПСЖ', pos: 'Нападающий', ovrBase: 88 },
-    { name: 'Ж. Кварацхелия', club: 'ПСЖ', pos: 'Нападающий', ovrBase: 88 },
-    { name: 'Л. Мартинес', club: 'Интер', pos: 'Нападающий', ovrBase: 87 },
-    { name: 'Р. Хёйлунн', club: 'Наполи', pos: 'Нападающий', ovrBase: 84 },
-    { name: 'Ф. Руис', club: 'ПСЖ', pos: 'Полузащитник', ovrBase: 85 },
-    { name: 'М. Олисе', club: 'Бавария', pos: 'Нападающий', ovrBase: 87 }
-  ];
+var TOP_PLAYERS_POOL = [
+  { name: 'К. Роналду', club: 'Реал Мадрид', pos: 'Нападающий', ovrBase: 90 },
+  { name: 'Л. Месси', club: 'Интер Майами', pos: 'Нападающий', ovrBase: 89 },
+  { name: 'К. Мбаппе', club: 'Реал Мадрид', pos: 'Нападающий', ovrBase: 92 },
+  { name: 'Э. Холанд', club: 'Манчестер Сити', pos: 'Нападающий', ovrBase: 92 },
+  { name: 'Д. Беллингем', club: 'Реал Мадрид', pos: 'Полузащитник', ovrBase: 90 },
+  { name: 'Винисиус', club: 'Реал Мадрид', pos: 'Нападающий', ovrBase: 91 },
+  { name: 'Д. Мусиала', club: 'Бавария', pos: 'Полузащитник', ovrBase: 87 },
+  { name: 'Ф. Вирц', club: 'Байер Леверкузен', pos: 'Полузащитник', ovrBase: 88 },
+  { name: 'Х. Кейн', club: 'Бавария', pos: 'Нападающий', ovrBase: 90 },
+  { name: 'Л. Ямал', club: 'Барселона', pos: 'Нападающий', ovrBase: 88 },
+  { name: 'Р. Левандовски', club: 'Барселона', pos: 'Нападающий', ovrBase: 88 },
+  { name: 'М. Салах', club: 'Ливерпуль', pos: 'Нападающий', ovrBase: 89 },
+  { name: 'Б. Фернандеш', club: 'Манчестер Юнайтед', pos: 'Полузащитник', ovrBase: 87 },
+  { name: 'Х. Киммих', club: 'Бавария', pos: 'Полузащитник', ovrBase: 87 },
+  { name: 'О. Дембеле', club: 'ПСЖ', pos: 'Нападающий', ovrBase: 88 },
+  { name: 'Ж. Кварацхелия', club: 'ПСЖ', pos: 'Нападающий', ovrBase: 88 },
+  { name: 'Л. Мартинес', club: 'Интер', pos: 'Нападающий', ovrBase: 87 },
+  { name: 'Р. Хёйлунн', club: 'Наполи', pos: 'Нападающий', ovrBase: 84 },
+  { name: 'Ф. Руис', club: 'ПСЖ', pos: 'Полузащитник', ovrBase: 85 },
+  { name: 'М. Олисе', club: 'Бавария', pos: 'Нападающий', ovrBase: 87 }
+];
 
-  var INVESTMENTS = [
-    { id: 'gym', name: '🏋️ Спортзал', desc: 'Свой фитнес-клуб.', cost: 100000, mult: 2, chance: 70 },
-    { id: 'restaurant', name: '🍽️ Ресторан', desc: 'Ресторан в центре.', cost: 250000, mult: 2, chance: 65 },
-    { id: 'cyber', name: '🎮 Киберспорт-клуб', desc: 'Клуб для киберспортсменов.', cost: 500000, mult: 2.5, chance: 60 },
-    { id: 'academy', name: '⚽ Футбольная академия', desc: 'Детская академия.', cost: 1000000, mult: 3, chance: 55 },
-    { id: 'realestate', name: '🏢 Недвижимость', desc: 'Покупка зданий.', cost: 2000000, mult: 3.5, chance: 50 },
-    { id: 'crypto', name: '₿ Криптовалюта', desc: 'Очень рискованно.', cost: 500000, mult: 5, chance: 40 }
-  ];
+var INVESTMENTS = [
+  { id: 'gym', name: '🏋️ Спортзал', desc: 'Свой фитнес-клуб.', cost: 100000, mult: 2, chance: 70 },
+  { id: 'restaurant', name: '🍽️ Ресторан', desc: 'Ресторан в центре.', cost: 250000, mult: 2, chance: 65 },
+  { id: 'cyber', name: '🎮 Киберспорт-клуб', desc: 'Клуб для киберспортсменов.', cost: 500000, mult: 2.5, chance: 60 },
+  { id: 'academy', name: '⚽ Футбольная академия', desc: 'Детская академия.', cost: 1000000, mult: 3, chance: 55 },
+  { id: 'realestate', name: '🏢 Недвижимость', desc: 'Покупка зданий.', cost: 2000000, mult: 3.5, chance: 50 },
+  { id: 'crypto', name: '₿ Криптовалюта', desc: 'Очень рискованно.', cost: 500000, mult: 5, chance: 40 }
+];
 
-  var INJURY_TYPES = [
-    { name: 'Растяжение', icon: '🩹', desc: 'Лёгкая травма.' },
-    { name: 'Ушиб', icon: '🤕', desc: 'Болезненный ушиб.' },
-    { name: 'Перелом', icon: '🦴', desc: 'Серьёзная травма.' },
-    { name: 'Повреждение мышц', icon: '💪', desc: 'Растяжение мышц.' },
-    { name: 'Травма колена', icon: '🦵', desc: 'Проблема с коленом.' },
-    { name: 'Сотрясение', icon: '😵', desc: 'Удар головой.' },
-    { name: 'Перелом ноги', icon: '🦶', desc: 'Тяжёлая травма.' },
-    { name: 'Разрыв связок', icon: '🩼', desc: 'Очень серьёзно.' }
-  ];
+var INJURY_TYPES = [
+  { name: 'Растяжение', icon: '🩹', desc: 'Лёгкая травма.' },
+  { name: 'Ушиб', icon: '🤕', desc: 'Болезненный ушиб.' },
+  { name: 'Перелом', icon: '🦴', desc: 'Серьёзная травма.' },
+  { name: 'Повреждение мышц', icon: '💪', desc: 'Растяжение мышц.' },
+  { name: 'Травма колена', icon: '🦵', desc: 'Проблема с коленом.' },
+  { name: 'Сотрясение', icon: '😵', desc: 'Удар головой.' },
+  { name: 'Перелом ноги', icon: '🦶', desc: 'Тяжёлая травма.' },
+  { name: 'Разрыв связок', icon: '🩼', desc: 'Очень серьёзно.' }
+];
 
-  // ==================== СПОНСОРЫ ====================
-  var SPONSORS = [
-    { id: 'local_shop', name: 'Локальный магазин', logo: '🏪', desc: 'Небольшой местный бизнес.', minRep: 0, minTrophies: 0, minOvr: 0, reward: 50000, perMatch: 200, level: 1 },
-    { id: 'sport_brand', name: 'SportBrand', logo: '👟', desc: 'Региональный спортивный бренд.', minRep: 30, minTrophies: 0, minOvr: 65, reward: 150000, perMatch: 500, level: 2 },
-    { id: 'energy_drink', name: 'EnergyBoost', logo: '⚡', desc: 'Энергетический напиток.', minRep: 50, minTrophies: 2, minOvr: 75, reward: 500000, perMatch: 1500, level: 3 },
-    { id: 'auto_giant', name: 'AutoGiant', logo: '🚗', desc: 'Автомобильный гигант.', minRep: 70, minTrophies: 5, minOvr: 85, reward: 1500000, perMatch: 4000, level: 4 },
-    { id: 'global_tech', name: 'GlobalTech', logo: '📱', desc: 'Мировая технологическая компания.', minRep: 85, minTrophies: 10, minOvr: 90, reward: 5000000, perMatch: 12000, level: 5 },
-    { id: 'legend_brand', name: 'LEGEND', logo: '👑', desc: 'Эксклюзивный бренд для легенд.', minRep: 95, minTrophies: 20, minOvr: 95, reward: 20000000, perMatch: 50000, level: 6 }
-  ];
+var SPONSORS = [
+  { id: 'local_shop', name: 'Локальный магазин', logo: '🏪', desc: 'Небольшой бизнес.', minRep: 0, minTrophies: 0, minOvr: 0, reward: 50000, perMatch: 200, level: 1 },
+  { id: 'sport_brand', name: 'SportBrand', logo: '👟', desc: 'Региональный бренд.', minRep: 30, minTrophies: 0, minOvr: 65, reward: 150000, perMatch: 500, level: 2 },
+  { id: 'energy_drink', name: 'EnergyBoost', logo: '⚡', desc: 'Энергетик.', minRep: 50, minTrophies: 2, minOvr: 75, reward: 500000, perMatch: 1500, level: 3 },
+  { id: 'auto_giant', name: 'AutoGiant', logo: '🚗', desc: 'Авто-гигант.', minRep: 70, minTrophies: 5, minOvr: 85, reward: 1500000, perMatch: 4000, level: 4 },
+  { id: 'global_tech', name: 'GlobalTech', logo: '📱', desc: 'Мировая компания.', minRep: 85, minTrophies: 10, minOvr: 90, reward: 5000000, perMatch: 12000, level: 5 },
+  { id: 'legend_brand', name: 'LEGEND', logo: '👑', desc: 'Для легенд.', minRep: 95, minTrophies: 20, minOvr: 95, reward: 20000000, perMatch: 50000, level: 6 }
+];
 
+var COACHES = ['Гвардиола', 'Анчелотти', 'Клопп', 'Моуриньо', 'Симеоне', 'Аллерги', 'Конте', 'Тухель', 'Зидан', 'Почеттино', 'Эмери'];
+var FIRST_NAMES = ['Алекс', 'Диего', 'Карлос', 'Лука', 'Марко', 'Тиаго', 'Андрей', 'Жорди', 'Матео', 'Ноа', 'Лео'];
+var LAST_NAMES = ['Силва', 'Ромеро', 'Санчес', 'Коста', 'Мартинес', 'Фернандес', 'Лопес', 'Гарсия', 'Петров', 'Мюллер', 'Смит'];
   // ==================== СОСТОЯНИЕ ====================
   var state = {
     lang: 'ru', bg: 'default', account: null, saves: [],
@@ -791,12 +777,14 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     seasonTopPlayers: [], bestSeason: null, bestMatchGoals: 0,
     unlockedAchievements: {}, careerWins: 0,
     matchInProgress: false, achFilter: 'all',
-    news: [], sandboxMode: false, pcMode: false,
+    news: [], sandboxMode: false, endlessMode: false, pcMode: false,
     money: 0, investWins: 0, myInvestments: [],
     notifications: [], injuriesCount: 0, recoveredFromInjury: false,
     injured: false, injuryMatchesLeft: 0, injuryType: null,
     currentSponsor: null, sponsorsSigned: 0, sponsorLevel: 0,
-    lastSponsorIncome: 0
+    trashLeaderboard: [], trashSaves: [],
+    tapTrainingAvailable: true, tapCount: 0, tapTimerId: null,
+    primeActive: false, primeYearsLeft: 0, wasInPrime: false, luckyOvr: false
   };
 
   var trainState = {
@@ -892,12 +880,13 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       money: state.money, investWins: state.investWins,
       injuriesCount: state.injuriesCount, recoveredFromInjury: state.recoveredFromInjury,
       yellowCards: state.yellowCards, redCards: state.redCards,
-      sponsorsSigned: state.sponsorsSigned, sponsorLevel: state.sponsorLevel
+      sponsorsSigned: state.sponsorsSigned, sponsorLevel: state.sponsorLevel,
+      wasInPrime: state.wasInPrime, luckyOvr: state.luckyOvr
     };
   }
 
   function checkAchievements() {
-    if (state.sandboxMode) return;
+    if (state.sandboxMode || state.endlessMode) return;
     var stats = getAchievementStats();
     var newUnlocked = [];
     ACHIEVEMENTS.forEach(function(ach) {
@@ -949,12 +938,14 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     var news = [];
     var gA = state.seasonGoals + state.seasonAssists;
     var playerName = state.player ? state.player.fullname : 'Игрок';
+    var ctx = { goals: state.seasonGoals, assists: state.seasonAssists, trophies: state.seasonTrophies.length, reputation: state.reputation };
 
     var playerNews = '<p><strong>' + playerName + '</strong> (' + state.currentClub.name + ')' +
       ' — <strong>' + state.seasonMatches + ' матчей</strong>, ' +
       '<strong>' + state.seasonGoals + ' голов</strong>, <strong>' + state.seasonAssists + ' ассистов</strong>.</p>';
     if (gA >= 20) playerNews += '<p>Эксперты называют его одним из лучших игроков сезона.</p>';
     else if (gA >= 10) playerNews += '<p>Пресса хвалит его стабильность.</p>';
+    else if (gA >= 5) playerNews += '<p>Журналисты считают, что ему ещё есть куда расти.</p>';
     else playerNews += '<p>СМИ отмечают, что игроку нужно больше работать.</p>';
     if (state.seasonYellows > 0 || state.seasonReds > 0) {
       playerNews += '<p>';
@@ -962,37 +953,35 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       if (state.seasonReds > 0) playerNews += '🟥 Красных: ' + state.seasonReds + '. ';
       playerNews += '</p>';
     }
-    news.push({
-      date: 'Сезон ' + season + ', ' + (halfSeason === 1 ? '1-е полугодие' : '2-е полугодие'),
-      title: 'Форма игрока', body: playerNews, comments: generateComments(3 + Math.floor(Math.random() * 4))
-    });
+    news.push({ date: 'Сезон ' + season + ', ' + (halfSeason === 1 ? '1-е полугодие' : '2-е полугодие'), title: 'Форма игрока', body: playerNews, comments: generateComments(3 + Math.floor(Math.random() * 4), ctx) });
 
     if (state.seasonTopPlayers && state.seasonTopPlayers.length > 0) {
       var top = state.seasonTopPlayers.slice(0, 3);
       var topNews = '<p>В гонке бомбардиров лидируют:</p><ul>';
       top.forEach(function(p) { topNews += '<li><strong>' + p.name + '</strong> (' + p.club + ') — ' + p.goals + 'Г ' + p.assists + 'А</li>'; });
       topNews += '</ul>';
-      news.push({ date: 'Сезон ' + season, title: 'Гонка бомбардиров', body: topNews, comments: generateComments(2 + Math.floor(Math.random() * 3)) });
+      news.push({ date: 'Сезон ' + season, title: 'Гонка бомбардиров', body: topNews, comments: generateComments(2 + Math.floor(Math.random() * 3), ctx) });
     }
 
     if (state.currentSponsor) {
-      var spNews = '<p>💼 Спонсор <strong>' + state.currentSponsor.name + '</strong> продолжает сотрудничество с игроком.</p>' +
+      var spNews = '<p>💼 Спонсор <strong>' + state.currentSponsor.name + '</strong> продолжает сотрудничество.</p>' +
         '<p>Доход за матч: <strong>' + formatMoney(state.currentSponsor.perMatch) + '</strong></p>';
-      news.push({ date: 'Сезон ' + season, title: '💼 Спонсоры', body: spNews, comments: generateComments(2 + Math.floor(Math.random() * 3)) });
+      news.push({ date: 'Сезон ' + season, title: '💼 Спонсоры', body: spNews, comments: generateComments(2 + Math.floor(Math.random() * 3), ctx) });
     }
 
     if (state.injured) {
       var injNews = '<p>⚠️ Игрок <strong>' + playerName + '</strong> получил травму: <strong>' + state.injuryType.name + '</strong>.</p>' +
         '<p>' + state.injuryType.desc + '</p>';
-      news.push({ date: 'Сезон ' + season, title: '🚑 Травма игрока', body: injNews, comments: generateComments(3 + Math.floor(Math.random() * 5)) });
+      news.push({ date: 'Сезон ' + season, title: '🚑 Травма игрока', body: injNews, comments: generateComments(3 + Math.floor(Math.random() * 5), ctx) });
     }
 
     var prediction = '<p><strong>Предсказание на ' + (halfSeason === 1 ? '2-е полугодие' : 'следующий сезон') + ':</strong></p>';
+    if (state.primeActive) prediction += '<p>🔥 Прайм-период! Игрок в лучшей форме.</p>';
     if (state.ovr >= 85) prediction += '<p>Эксперты уверены: игрок продолжит блистать.</p>';
     else if (state.ovr >= 75) prediction += '<p>Ожидается стабильный футбол.</p>';
     else prediction += '<p>Игроку нужно время для адаптации.</p>';
     if (state.age >= 37) prediction += '<p>⚠️ Возраст даёт о себе знать — возможен спад формы.</p>';
-    news.push({ date: 'Сезон ' + season, title: 'Предсказания', body: prediction, comments: generateComments(2 + Math.floor(Math.random() * 3)) });
+    news.push({ date: 'Сезон ' + season, title: 'Предсказания', body: prediction, comments: generateComments(2 + Math.floor(Math.random() * 3), ctx) });
 
     return news;
   }
@@ -1045,7 +1034,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     saveCareer(true);
   }
 
-  // ==================== СПОНСОРЫ UI ====================
+  // ==================== СПОНСОРЫ ====================
   function renderSponsors() {
     var list = $('sponsors-list');
     var totalTrophies = 0;
@@ -1056,7 +1045,6 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       var canSign = state.reputation >= sp.minRep && totalTrophies >= sp.minTrophies && state.ovr >= sp.minOvr;
       var isCurrent = state.currentSponsor && state.currentSponsor.id === sp.id;
       var cls = 'sponsor-card' + (canSign ? '' : ' locked');
-
       html += '<div class="' + cls + '">' +
         '<div class="sponsor-logo">' + sp.logo + '</div>' +
         '<div class="sponsor-name">' + sp.name + '</div>' +
@@ -1077,9 +1065,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 
     var btns = list.querySelectorAll('.sponsor-btn[data-sponsor]');
     for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click', function() {
-        signSponsor(this.dataset.sponsor);
-      });
+      btns[i].addEventListener('click', function() { signSponsor(this.dataset.sponsor); });
     }
   }
 
@@ -1091,8 +1077,9 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     state.currentSponsor = { id: sp.id, name: sp.name, perMatch: sp.perMatch, level: sp.level };
     state.sponsorsSigned++;
     state.sponsorLevel = Math.max(state.sponsorLevel, sp.level);
-    addNotification('💼', 'Спонсор подписан!', sp.name + ' теперь твой спонсор. Получено: ' + formatMoney(sp.reward));
+    addNotification('💼', 'Спонсор подписан!', sp.name + ' — ' + formatMoney(sp.reward));
     alert('✍️ Контракт подписан!\n\n' + sp.name + '\nБонус: ' + formatMoney(sp.reward) + '\nЗа матч: ' + formatMoney(sp.perMatch));
+    updateCareerUI();
     checkAchievements();
     saveCareer(true);
     renderSponsors();
@@ -1131,9 +1118,12 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       var profit = Math.round(inv.cost * inv.mult);
       state.money += profit;
       state.investWins++;
-      alert('🎉 УСПЕХ!\n\n' + inv.name + '\nВложили: ' + formatMoney(inv.cost) + '\nПолучили: ' + formatMoney(profit));
+      updateCareerUI();
+      updateSaveCountInfo();
+      alert('🎉 УСПЕХ!\n\n' + inv.name + '\nВложили: ' + formatMoney(inv.cost) + '\nПолучили: ' + formatMoney(profit) + '\n\nНовый капитал: ' + formatMoney(state.money));
     } else {
-      alert('😢 ПРОВАЛ!\n\n' + inv.name + '\nПотеряно: ' + formatMoney(inv.cost));
+      updateCareerUI();
+      alert('😢 ПРОВАЛ!\n\n' + inv.name + '\nПотеряно: ' + formatMoney(inv.cost) + '\n\nОсталось: ' + formatMoney(state.money));
     }
     checkAchievements();
     saveCareer(true);
@@ -1236,20 +1226,11 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     $('pos-hint').innerHTML = html;
   }
 
-  function startSandbox() {
-    var fn = $('sb-fullname').value.trim() || 'Игрок';
-    var position = $('sb-position').value;
-    var season = parseInt($('sb-season').value) || 1;
-    var age = parseInt($('sb-age').value) || 17;
-    var ovr = parseInt($('sb-ovr').value) || 85;
-    if (ovr > 99) ovr = 99;
-    var goals = parseInt($('sb-goals').value) || 0;
-    var assists = parseInt($('sb-assists').value) || 0;
-    var matches = parseInt($('sb-matches').value) || 0;
-    var saves = parseInt($('sb-saves').value) || 0;
-    var reputation = parseInt($('sb-reputation').value) || 50;
-    var clubRating = parseInt($('sb-club-rating').value) || 80;
-    var money = parseInt($('sb-money').value) || 100000;
+  function startEndless() {
+    var fn = prompt('Введите имя игрока:', 'Игрок');
+    if (!fn) return;
+    var position = prompt('Позиция (Вратарь/Защитник/Полузащитник/Нападающий):', 'Нападающий');
+    if (!position || ['Вратарь', 'Защитник', 'Полузащитник', 'Нападающий'].indexOf(position) < 0) position = 'Нападающий';
 
     var baseAttrs;
     if (position === 'Вратарь') {
@@ -1257,33 +1238,37 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       for (var k in ATTRS_GK) if (ATTRS_GK.hasOwnProperty(k)) baseAttrs[k] = ATTRS_GK[k];
     } else baseAttrs = JSON.parse(JSON.stringify(ATTRS_FIELD[position]));
 
+    var ovr = 66 + Math.floor(Math.random() * 5);
     var sum = 0;
     for (var kk in baseAttrs) if (baseAttrs.hasOwnProperty(kk)) sum += baseAttrs[kk];
     var avg = sum / Object.keys(baseAttrs).length;
     var diff = ovr - Math.round(avg);
-    for (var k2 in baseAttrs) if (baseAttrs.hasOwnProperty(k2)) baseAttrs[k2] = Math.max(1, Math.min(99, baseAttrs[k2] + diff));
+    for (var k2 in baseAttrs) if (baseAttrs.hasOwnProperty(k2)) baseAttrs[k2] = Math.max(30, Math.min(99, baseAttrs[k2] + diff));
 
-    var bestClub = ALL_CLUBS[0], bestDiff = 999;
-    ALL_CLUBS.forEach(function(c) { var d = Math.abs(c.rating - clubRating); if (d < bestDiff) { bestDiff = d; bestClub = c; } });
+    var startClub = WEAK_CLUBS[Math.floor(Math.random() * WEAK_CLUBS.length)];
 
     state.player = { fullname: fn, country: 'Россия', position: position };
-    state.talent = null; state.season = season; state.age = age;
-    state.matchesPlayed = matches; state.goals = goals; state.assists = assists;
-    state.wins = 0; state.careerWins = 0; state.savesCount = saves; state.cleanSheets = 0;
+    state.talent = { id: 'none', name: 'Нету' };
+    state.season = 1; state.age = 17;
+    state.matchesPlayed = 0; state.goals = 0; state.assists = 0;
+    state.wins = 0; state.careerWins = 0; state.savesCount = 0; state.cleanSheets = 0;
     state.yellowCards = 0; state.redCards = 0; state.totalYellows = 0;
-    state.ovr = ovr; state.attrs = baseAttrs; state.currentClub = bestClub;
+    state.ovr = ovr; state.attrs = baseAttrs; state.currentClub = startClub;
     state.upgradePoints = 5; state.careerActive = true;
     state.seasonMatches = 0; state.seasonGoals = 0; state.seasonAssists = 0;
     state.seasonSavesCount = 0; state.seasonCleanSheets = 0; state.seasonYellows = 0; state.seasonReds = 0;
     state.seasonTrophies = []; state.careerTrophies = {};
     state.halfSeason = 1; state.selectedOfferIdx = -1; state.pendingOffers = [];
-    state.trainingAvailable = true; state.reputation = reputation; state.contractYears = 3;
+    state.trainingAvailable = true; state.reputation = 50; state.contractYears = 3;
     state.seasonTopPlayers = generateTopPlayers(); state.bestSeason = null;
-    state.bestMatchGoals = 0; state.matchInProgress = false; state.sandboxMode = true;
-    state.money = money; state.investWins = 0; state.myInvestments = [];
+    state.bestMatchGoals = 0; state.matchInProgress = false;
+    state.sandboxMode = false; state.endlessMode = true;
+    state.money = 0; state.investWins = 0; state.myInvestments = [];
     state.notifications = []; state.injuriesCount = 0; state.recoveredFromInjury = false;
     state.injured = false; state.injuryMatchesLeft = 0; state.injuryType = null;
     state.currentSponsor = null; state.sponsorsSigned = 0; state.sponsorLevel = 0;
+    state.tapTrainingAvailable = true; state.primeActive = false; state.primeYearsLeft = 0;
+    state.wasInPrime = false; state.luckyOvr = false; state.maxSeasons = 9999;
 
     generateCompetitions();
     state.news = generateNews(state.season, state.halfSeason);
@@ -1322,7 +1307,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 
     state.player = { fullname: fn, country: country, position: position };
     state.talent = talent ? { id: talent.id, name: talent.name } : null;
-    state.season = 1; state.age = 17;
+    state.season = 1; state.age = 17; state.maxSeasons = 25;
     state.matchesPlayed = 0; state.goals = 0; state.assists = 0;
     state.wins = 0; state.careerWins = 0; state.savesCount = 0; state.cleanSheets = 0;
     state.yellowCards = 0; state.redCards = 0; state.totalYellows = 0;
@@ -1334,11 +1319,14 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     state.halfSeason = 1; state.selectedOfferIdx = -1; state.pendingOffers = [];
     state.trainingAvailable = true; state.reputation = 50; state.contractYears = 3;
     state.seasonTopPlayers = generateTopPlayers(); state.bestSeason = null;
-    state.bestMatchGoals = 0; state.matchInProgress = false; state.sandboxMode = false;
+    state.bestMatchGoals = 0; state.matchInProgress = false;
+    state.sandboxMode = false; state.endlessMode = false;
     state.money = 0; state.investWins = 0; state.myInvestments = [];
     state.notifications = []; state.injuriesCount = 0; state.recoveredFromInjury = false;
     state.injured = false; state.injuryMatchesLeft = 0; state.injuryType = null;
     state.currentSponsor = null; state.sponsorsSigned = 0; state.sponsorLevel = 0;
+    state.tapTrainingAvailable = true; state.primeActive = false; state.primeYearsLeft = 0;
+    state.wasInPrime = false; state.luckyOvr = false;
 
     generateCompetitions();
     state.news = generateNews(state.season, state.halfSeason);
@@ -1395,10 +1383,12 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 
   function updateCareerUI() {
     var contractText = 'Контракт: ' + state.contractYears + ' г.';
-    var title = 'Сезон ' + state.season + ' — ' + state.age + ' лет — ' +
-      (state.halfSeason === 1 ? '1-е полугодие' : '2-е полугодие') + ' — ' + contractText;
+    var title = 'Сезон ' + state.season;
+    if (!state.endlessMode) title += ' / ' + state.maxSeasons;
+    title += ' — ' + state.age + ' лет — ' + (state.halfSeason === 1 ? '1-е полугодие' : '2-е полугодие') + ' — ' + contractText;
     if (state.talent) title += ' — ' + state.talent.name;
-    if (state.sandboxMode) title += ' 🎮';
+    if (state.endlessMode) title += ' ♾️';
+    if (state.primeActive) title += ' 🔥 ПРАЙМ';
     $('career-season').textContent = title;
     $('cs-matches').textContent = state.matchesPlayed;
     $('cs-goals').textContent = state.goals;
@@ -1418,7 +1408,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
         warn.classList.remove('hidden');
         warn.innerHTML = '<div class="injury-box"><div class="injury-icon">🏥</div>' +
           '<div class="injury-title">' + state.injuryType.name + '</div>' +
-          '<div class="injury-desc">' + state.injuryType.desc + '<br>Осталось матчей: <strong>' + state.injuryMatchesLeft + '</strong></div></div>';
+          '<div class="injury-desc">' + state.injuryType.desc + '<br>Осталось: <strong>' + state.injuryMatchesLeft + '</strong></div></div>';
         if (skipBtn) skipBtn.classList.remove('hidden');
       } else {
         warn.classList.add('hidden');
@@ -1534,6 +1524,28 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     list.innerHTML = html;
   }
 
+  function renderLineup() {
+    var info = $('lineup-info');
+    var club = state.currentClub;
+    var coach = COACHES[club.name.length % COACHES.length];
+    info.innerHTML = '<strong>' + club.name + '</strong> — рейтинг ' + club.rating + '<br>Тренер: ' + coach;
+
+    var positions = ['Вратарь', 'Защитник', 'Защитник', 'Защитник', 'Защитник', 'Полузащитник', 'Полузащитник', 'Полузащитник', 'Нападающий', 'Нападающий', 'Нападающий'];
+    var html = '';
+    positions.forEach(function(pos, i) {
+      var name = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)] + ' ' + LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+      var rating = club.rating + Math.floor(Math.random() * 10) - 5;
+      if (rating > 99) rating = 99;
+      var isMe = (state.player.position === pos && i === 0);
+      var cls = isMe ? 'top-player-row me' : 'top-player-row';
+      html += '<div class="' + cls + '"><div class="top-player-rank">' + (i + 1) + '</div>' +
+        '<div class="top-player-info"><div>' + (isMe ? state.player.fullname + ' (ВЫ)' : name) + '</div>' +
+        '<div class="top-player-club">' + pos + ' · OVR ' + rating + '</div></div>' +
+        '<div class="top-player-stat">' + rating + '</div></div>';
+    });
+    $('lineup-list').innerHTML = html;
+  }
+
   function renderTrophies() {
     var teamTrophies = ['league', 'national_cup', 'champions_league', 'europa_league', 'conference_league', 'super_cup', 'club_world_cup', 'world_cup', 'euro_cup', 'copa_america', 'africa_cup', 'asian_cup'];
     var personalTrophies = ['golden_ball', 'golden_boot', 'golden_glove'];
@@ -1608,7 +1620,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     if (!state.careerActive) return;
     if (state.matchInProgress) return;
     if (state.injured) {
-      alert('🏥 Вы травмированы! Пропустите ' + state.injuryMatchesLeft + ' матчей или нажмите «Пропустить матчи травмы».');
+      alert('🏥 Ты травмирован! Пропусти ' + state.injuryMatchesLeft + ' матчей.');
       return;
     }
     state.matchInProgress = true;
@@ -1650,14 +1662,12 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       if (ourGoals < 0) ourGoals = 0;
     }
 
-    // КАРТОЧКИ
     var yellow = false, red = false;
     var cardRoll = Math.random();
     if (cardRoll < 0.03) { yellow = true; state.yellowCards++; state.seasonYellows++; state.totalYellows++; }
     var redRoll = Math.random();
     if (redRoll < 0.005) { red = true; state.redCards++; state.seasonReds++; }
     if (red) {
-      // Красная = авто-поражение
       result = 'Поражение (красная)';
       ourGoals = Math.max(0, ourGoals - 1);
       updateReputation(-2);
@@ -1704,7 +1714,8 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     if (isCleanSheet) { state.cleanSheets++; state.seasonCleanSheets++; }
     if (playerGoals > state.bestMatchGoals) state.bestMatchGoals = playerGoals;
 
-    if (Math.random() < 0.15) {
+    var growthChance = state.primeActive ? 0.30 : 0.15;
+    if (Math.random() < growthChance) {
       var keys = getAttrKeys();
       var k = keys[Math.floor(Math.random() * keys.length)];
       if (state.attrs[k] < 99) {
@@ -1715,9 +1726,15 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       }
     }
 
-    // ШАНС ТРАВМЫ 1.5%
-    var injuryRoll = Math.random();
-    if (injuryRoll < 0.015) {
+    // 0.5% шанс +1 OVR
+    if (Math.random() < 0.005) {
+      state.ovr = Math.min(99, state.ovr + 1);
+      state.luckyOvr = true;
+      addNotification('⭐', 'Рост OVR!', 'Твой OVR вырос на +1! Теперь ' + state.ovr);
+    }
+
+    // Шанс травмы 1.5%
+    if (Math.random() < 0.015) {
       var injType = INJURY_TYPES[Math.floor(Math.random() * INJURY_TYPES.length)];
       state.injured = true;
       state.injuryType = injType;
@@ -1741,7 +1758,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       '<div class="match-result">' + ourGoals + ' : ' + oppGoals + '</div>' +
       '<div style="font-size:0.95rem; font-weight:600; color:#f0e2b8;">' + result + cardInfo + '</div>' +
       '<div style="font-size:0.82rem; margin-top:5px; opacity:0.8;">Вы забили: ' + playerGoals + ' | Ассисты: ' + playerAssists + '</div>' +
-      '<div style="font-size:0.82rem; margin-top:3px; color:#a5e8a5;">💰 Зарплата: +' + formatMoney(salary) + (state.currentSponsor ? ' + спонсор' : '') + '</div>' + extraInfo;
+      '<div style="font-size:0.82rem; margin-top:3px; color:#a5e8a5;">💰 +' + formatMoney(salary) + '</div>' + extraInfo;
 
     checkAchievements();
     saveCareer(true);
@@ -1750,6 +1767,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       state.halfSeason = 2;
       state.upgradePoints = 5;
       state.trainingAvailable = true;
+      state.tapTrainingAvailable = true;
       updateTrainingButton();
       updateCareerUI();
       renderCompetitions();
@@ -1771,7 +1789,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
   }
 
   function skipInjury() {
-    if (!state.injured) { alert('Вы не травмированы'); return; }
+    if (!state.injured) { alert('Ты не травмирован'); return; }
     var skipped = state.injuryMatchesLeft;
     state.matchesPlayed += skipped;
     state.seasonMatches += skipped;
@@ -1779,15 +1797,16 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     state.injured = false;
     state.recoveredFromInjury = true;
     state.injuryType = null;
-    addNotification('💪', 'Возвращение!', 'Вы восстановились после травмы и готовы играть!');
+    addNotification('💪', 'Возвращение!', 'Восстановился после травмы!');
     updateCareerUI();
     checkAchievements();
     saveCareer(true);
-    alert('⏩ Пропущено ' + skipped + ' матчей. Вы восстановились!');
+    alert('⏩ Пропущено ' + skipped + ' матчей. Ты восстановился!');
     if (state.seasonMatches >= 15 && state.halfSeason === 1) {
       state.halfSeason = 2;
       state.upgradePoints = 5;
       state.trainingAvailable = true;
+      state.tapTrainingAvailable = true;
       updateTrainingButton();
       updateCareerUI();
       state.news = generateNews(state.season, state.halfSeason);
@@ -1820,8 +1839,9 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     else if (!allKeyMaxed) advice = 'Советую качать ' + (ATTR_DISPLAY[weakestKeyAttr] || weakestKeyAttr) + ' (' + weakestKeyVal + ').';
     else advice = 'Подтяни ' + (ATTR_DISPLAY[weakestAny] || weakestAny) + ' (' + weakestAnyVal + ').';
 
-    if (state.injured) messages.push('🏥 Ты травмирован! Пропусти матчи.');
-    if (state.age >= 37) messages.push('⚠️ Возраст ' + state.age + '. Атрибуты падают каждый сезон.');
+    if (state.injured) messages.push('🏥 Травма! Пропусти матчи.');
+    if (state.primeActive) messages.push('🔥 Прайм! Атрибуты растут быстрее.');
+    if (state.age >= 37) messages.push('⚠️ Возраст ' + state.age + '. Атрибуты падают.');
 
     if (state.halfSeason === 2 && state.seasonMatches === 15) {
       messages.push('Полугодие завершено.'); messages.push(advice);
@@ -1963,22 +1983,36 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     state.contractYears--;
     if (state.contractYears < 0) state.contractYears = 0;
 
-    // ДАУНГРЕЙД ПОСЛЕ 37 ЛЕТ
+    // ПРАЙМ
+    if (!state.endlessMode) {
+      if (state.age >= 19 && state.age <= 25 && !state.primeActive && Math.random() < 0.4) {
+        state.primeActive = true;
+        state.primeYearsLeft = 3;
+        state.wasInPrime = true;
+        addNotification('🔥', 'Прайм!', 'У тебя прайм на 3 сезона! Атрибуты растут быстрее.');
+      }
+      if (state.primeActive) {
+        state.primeYearsLeft--;
+        if (state.primeYearsLeft <= 0) {
+          state.primeActive = false;
+          addNotification('⏳', 'Прайм закончился', 'Прайм-период завершён.');
+        }
+      }
+    }
+
+    // ДАУНГРЕЙД
     var downgradeMsg = '';
-    if (state.age >= 37) {
+    if (state.age >= 37 && !state.endlessMode) {
       var drop = Math.floor((state.age - 36) * 1.2);
       var keys = getAttrKeys();
-      var totalDrop = 0;
       keys.forEach(function(k) {
         var old = state.attrs[k] || 0;
-        var newVal = Math.max(40, old - drop);
-        state.attrs[k] = newVal;
-        totalDrop += (old - newVal);
+        state.attrs[k] = Math.max(40, old - drop);
       });
       var sum = 0;
       keys.forEach(function(k) { sum += state.attrs[k]; });
       state.ovr = Math.round(sum / keys.length);
-      downgradeMsg = '⚠️ Возраст ' + state.age + ' — атрибуты снизились на ' + drop + ' каждый.';
+      downgradeMsg = '⚠️ Возраст ' + state.age + ' — атрибуты снизились на ' + drop + '.';
       addNotification('📉', 'Возрастной спад', downgradeMsg);
     }
 
@@ -1987,6 +2021,28 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     $('upgrade-points').style.display = 'block';
     $('upgrade-list').style.display = 'block';
     renderAgent();
+
+    // ОЦЕНКА ТРЕНЕРА
+    var coachRating = 1;
+    if (seasonG_A >= 40 || state.seasonTrophies.length >= 4) coachRating = 5;
+    else if (seasonG_A >= 25 || state.seasonTrophies.length >= 3) coachRating = 4;
+    else if (seasonG_A >= 15 || state.seasonTrophies.length >= 2) coachRating = 3;
+    else if (seasonG_A >= 5 || state.seasonTrophies.length >= 1) coachRating = 2;
+    var starsHtml = '';
+    for (var i = 0; i < 5; i++) starsHtml += (i < coachRating ? '⭐' : '☆');
+
+    var trophyAnimHtml = '<div style="text-align:center; margin:14px 0;">';
+    if (state.seasonTrophies.length > 0) {
+      trophyAnimHtml += '<div style="font-size:0.9rem; opacity:0.7; margin-bottom:8px;">🏆 Трофеи сезона:</div>';
+      state.seasonTrophies.forEach(function(t) {
+        var td = TROPHY_DEFS[t];
+        trophyAnimHtml += '<span class="trophy-badge" style="font-size:1rem; padding:4px 12px;">' + (td ? td.icon : '🏆') + ' ' + (td ? td.name : t) + '</span>';
+      });
+    } else {
+      trophyAnimHtml += '<div style="opacity:0.6;">Без трофеев</div>';
+    }
+    trophyAnimHtml += '<div style="margin-top:12px; font-size:1.1rem;">Оценка тренера: <strong style="font-size:1.3rem;">' + starsHtml + '</strong></div>';
+    trophyAnimHtml += '</div>';
 
     var sHtml = '<div><strong>Сезон ' + state.season + '</strong></div>';
     sHtml += '<div>Матчи: ' + state.seasonMatches + ' | Голы: ' + state.seasonGoals + ' | Ассисты: ' + state.seasonAssists;
@@ -1997,15 +2053,8 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     sHtml += '<div style="margin-top:6px;">' + renderReputation() + '</div>';
     if (state.seasonYellows > 0) sHtml += '<div style="margin-top:6px;">🟨 Жёлтых: ' + state.seasonYellows + '</div>';
     if (state.seasonReds > 0) sHtml += '<div style="margin-top:6px;">🟥 Красных: ' + state.seasonReds + '</div>';
+    sHtml += trophyAnimHtml;
     if (downgradeMsg) sHtml += '<div class="injury-box" style="margin-top:10px;"><div class="injury-icon">📉</div><div class="injury-title">Возрастной спад</div><div class="injury-desc">' + downgradeMsg + '</div></div>';
-    if (state.seasonTrophies.length > 0) {
-      sHtml += '<div style="margin-top:8px;">Трофеи: ';
-      state.seasonTrophies.forEach(function(k) {
-        var td = TROPHY_DEFS[k];
-        sHtml += '<span class="trophy-badge">' + (td ? td.icon : '🏆') + ' ' + (td ? td.name : k) + '</span>';
-      });
-      sHtml += '</div>';
-    }
     if (state.contractYears <= 0) sHtml += '<div class="contract-box" style="margin-top:10px;">⚠️ <strong>Контракт закончился!</strong></div>';
     else if (state.contractYears === 1) sHtml += '<div class="contract-box" style="margin-top:10px;">📝 <strong>Контракт заканчивается через 1 сезон.</strong></div>';
     else sHtml += '<div class="contract-box" style="margin-top:10px;">📝 Контракт ещё <strong>' + state.contractYears + ' сезона</strong>.</div>';
@@ -2111,11 +2160,10 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       }
       state.season++;
       state.age++;
-      if (state.season > state.maxSeasons) {
-        alert('Карьера завершена! Вы сыграли 25 сезонов.');
+      if (!state.endlessMode && state.season > state.maxSeasons) {
+        alert('Карьера завершена! Ты сыграл 25 сезонов.');
         checkAchievements();
         state.careerActive = false;
-        state.sandboxMode = false;
         showScreen('main');
         return;
       }
@@ -2126,6 +2174,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       state.seasonYellows = 0; state.seasonReds = 0;
       state.seasonTrophies = []; state.halfSeason = 1;
       state.upgradePoints = 5; state.trainingAvailable = true;
+      state.tapTrainingAvailable = true;
       state.selectedOfferIdx = -1; state.pendingOffers = [];
       state.bestMatchGoals = 0; state.matchInProgress = false;
       state.seasonTopPlayers = generateTopPlayers();
@@ -2139,7 +2188,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 
   function openTraining() {
     if (!state.careerActive) return;
-    if (state.injured) { alert('Вы травмированы!'); return; }
+    if (state.injured) { alert('Ты травмирован!'); return; }
     var keys = getAttrKeys();
     var allMaxed = true;
     keys.forEach(function(k) { if ((state.attrs[k] || 0) < 99) allMaxed = false; });
@@ -2153,6 +2202,51 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     $('btn-start-training').disabled = true;
     renderTrainAttrs();
     showScreen('training');
+  }
+
+  function openTapTraining() {
+    if (!state.careerActive) return;
+    if (state.injured) { alert('Ты травмирован!'); return; }
+    if (!state.tapTrainingAvailable) { alert('Быстрая тренировка доступна раз в 2 полугодия'); return; }
+    state.tapCount = 0;
+    var timeLeft = 10.0;
+    $('tap-timer').textContent = timeLeft.toFixed(1);
+    $('tap-count').textContent = 'Тапов: 0';
+    $('tap-result').textContent = '';
+    $('btn-tap-big').disabled = false;
+    showScreen('training-tap');
+    if (state.tapTimerId) clearInterval(state.tapTimerId);
+    state.tapTimerId = setInterval(function() {
+      timeLeft -= 0.1;
+      if (timeLeft <= 0) {
+        clearInterval(state.tapTimerId);
+        timeLeft = 0;
+        $('tap-timer').textContent = '0.0';
+        $('btn-tap-big').disabled = true;
+        finishTapTraining();
+      } else {
+        $('tap-timer').textContent = timeLeft.toFixed(1);
+      }
+    }, 100);
+  }
+
+  function finishTapTraining() {
+    var bonus = Math.floor(state.tapCount / 5);
+    if (bonus > 0) {
+      var keys = getAttrKeys();
+      var k = keys[Math.floor(Math.random() * keys.length)];
+      state.attrs[k] = Math.min(99, (state.attrs[k] || 0) + bonus);
+      var sum = 0;
+      for (var kk in state.attrs) if (state.attrs.hasOwnProperty(kk)) sum += state.attrs[kk];
+      state.ovr = Math.round(sum / keys.length);
+      $('tap-result').textContent = '🎉 Тапов: ' + state.tapCount + ' → +' + bonus + ' к ' + (ATTR_DISPLAY[k] || k);
+    } else {
+      $('tap-result').textContent = '😢 Мало тапов. Нужно минимум 5.';
+    }
+    state.tapTrainingAvailable = false;
+    updateCareerUI();
+    renderPlayerAttrs();
+    saveCareer(true);
   }
 
   function renderTrainAttrs() {
@@ -2245,7 +2339,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       state.ovr = Math.round(sum / getAttrKeys().length);
     }
     $('train-result').innerHTML = '<div style="font-size:1.4rem;">🎯 ' + trainState.hits + ' / ' + trainState.maxLevel + '</div>' +
-      '<div style="font-size:0.95rem; margin-top:8px; color:#6fdc6c;">Прокачал ' + (ATTR_DISPLAY[trainState.selectedAttr] || trainState.selectedAttr) + ' на +' + bonus + '!</div>';
+      '<div style="font-size:0.95rem; margin-top:8px; color:#6fdc6c;">+' + bonus + ' к ' + (ATTR_DISPLAY[trainState.selectedAttr] || trainState.selectedAttr) + '!</div>';
     $('train-result').style.color = '#f0e2b8';
     state.trainingAvailable = false;
     updateTrainingButton(); updateCareerUI(); renderPlayerAttrs(); saveCareer(true);
@@ -2261,7 +2355,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     var totalTrophies = 0;
     for (var k in state.careerTrophies) if (state.careerTrophies.hasOwnProperty(k)) totalTrophies += state.careerTrophies[k];
     var score = state.goals + state.assists * 0.7 + totalTrophies * 5 + state.ovr + state.savesCount * 0.3 + state.reputation * 0.5 + Math.floor(state.money / 100000);
-    var entry = { name: state.player.fullname, country: state.player.country, position: state.player.position, season: state.season, ovr: state.ovr, goals: state.goals, assists: state.assists, savesCount: state.savesCount, trophies: totalTrophies, reputation: state.reputation, score: Math.round(score * 10) / 10, date: Date.now() };
+    var entry = { name: state.player.fullname, country: state.player.country, position: state.player.position, season: state.season, ovr: state.ovr, goals: state.goals, assists: state.assists, savesCount: state.savesCount, trophies: totalTrophies, reputation: state.reputation, money: state.money, score: Math.round(score * 10) / 10, date: Date.now() };
     if (!Array.isArray(state.leaderboard)) state.leaderboard = [];
     var existing = -1;
     for (var i = 0; i < state.leaderboard.length; i++) if (state.leaderboard[i].name === entry.name) { existing = i; break; }
@@ -2282,11 +2376,46 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     state.leaderboard.forEach(function(e, i) {
       var isMe = state.player && e.name === state.player.fullname;
       var extra = e.position === 'Вратарь' ? ' · Сейвы: ' + (e.savesCount || 0) : '';
-      html += '<div class="lb-row ' + (isMe ? 'me' : '') + '"><div class="lb-rank">#' + (i + 1) + '</div>' +
-        '<div class="lb-name"><div>' + e.name + '</div><div class="lb-club">' + e.country + ' · ' + e.position + extra + ' · OVR ' + e.ovr + '</div></div>' +
-        '<div class="lb-score">' + e.score + '</div></div>';
+      html += '<div class="lb-row ' + (isMe ? 'me' : '') + '">' +
+        '<div class="lb-rank">#' + (i + 1) + '</div>' +
+        '<div class="lb-name">' +
+          '<div>' + e.name + (isMe ? ' (ВЫ)' : '') + '</div>' +
+          '<div class="lb-club">' + e.country + ' · ' + e.position + extra + ' · OVR ' + e.ovr + ' · Сезон ' + (e.season || '?') + '</div>' +
+          '<div style="font-size:0.72rem; opacity:0.7; color:#f0e2b8;">⚽ ' + (e.goals || 0) + 'Г · 🎯 ' + (e.assists || 0) + 'А · 🏆 ' + (e.trophies || 0) + ' · 💰 ' + formatMoney(e.money || 0) + ' · ⭐ ' + (e.reputation || 0) + '</div>' +
+        '</div>' +
+        '<div class="lb-score">' + e.score + '</div>' +
+        (isMe ? '<button class="trash-btn" data-del="' + i + '" style="margin-left:8px; background:transparent; border:none; color:#dc5050; font-size:1.1rem; cursor:pointer; padding:4px;">🗑️</button>' : '') +
+        '</div>';
     });
     list.innerHTML = html;
+
+    var btns = list.querySelectorAll('.trash-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function() {
+        var idx = parseInt(this.dataset.del, 10);
+        var removed = state.leaderboard.splice(idx, 1)[0];
+        if (removed && !state.trashLeaderboard) state.trashLeaderboard = [];
+        if (removed) state.trashLeaderboard.push(removed);
+        try { localStorage.setItem('goat_leaderboard', JSON.stringify(state.leaderboard)); } catch(e) {}
+        try { localStorage.setItem('goat_trash_leaderboard', JSON.stringify(state.trashLeaderboard)); } catch(e) {}
+        renderLeaderboard();
+      });
+    }
+
+    if (state.trashLeaderboard && state.trashLeaderboard.length > 0) {
+      var trashBtn = document.createElement('button');
+      trashBtn.className = 'btn-secondary';
+      trashBtn.style.marginTop = '12px';
+      trashBtn.textContent = '♻️ Восстановить из корзины (' + state.trashLeaderboard.length + ')';
+      trashBtn.onclick = function() {
+        state.leaderboard = state.leaderboard.concat(state.trashLeaderboard);
+        state.trashLeaderboard = [];
+        try { localStorage.setItem('goat_leaderboard', JSON.stringify(state.leaderboard)); } catch(e) {}
+        try { localStorage.setItem('goat_trash_leaderboard', '[]'); } catch(e) {}
+        renderLeaderboard();
+      };
+      list.appendChild(trashBtn);
+    }
   }
 
   function saveCareer(silent) {
@@ -2303,13 +2432,16 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
       seasonSavesCount: state.seasonSavesCount, seasonCleanSheets: state.seasonCleanSheets,
       seasonYellows: state.seasonYellows, seasonReds: state.seasonReds,
       halfSeason: state.halfSeason, currentCompetitions: state.currentCompetitions,
-      trainingAvailable: state.trainingAvailable, reputation: state.reputation, contractYears: state.contractYears,
+      trainingAvailable: state.trainingAvailable, tapTrainingAvailable: state.tapTrainingAvailable,
+      reputation: state.reputation, contractYears: state.contractYears,
       seasonTopPlayers: state.seasonTopPlayers, bestSeason: state.bestSeason, bestMatchGoals: state.bestMatchGoals,
-      unlockedAchievements: state.unlockedAchievements, news: state.news, sandboxMode: state.sandboxMode,
+      unlockedAchievements: state.unlockedAchievements, news: state.news,
+      sandboxMode: state.sandboxMode, endlessMode: state.endlessMode, maxSeasons: state.maxSeasons,
       money: state.money, investWins: state.investWins, myInvestments: state.myInvestments,
       notifications: state.notifications, injuriesCount: state.injuriesCount, recoveredFromInjury: state.recoveredFromInjury,
       injured: state.injured, injuryMatchesLeft: state.injuryMatchesLeft, injuryType: state.injuryType,
       currentSponsor: state.currentSponsor, sponsorsSigned: state.sponsorsSigned, sponsorLevel: state.sponsorLevel,
+      primeActive: state.primeActive, primeYearsLeft: state.primeYearsLeft, wasInPrime: state.wasInPrime, luckyOvr: state.luckyOvr,
       date: Date.now()
     };
     var existing = -1;
@@ -2331,6 +2463,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     var s = state.saves[idx];
     if (!s) return;
     state.player = s.player; state.talent = s.talent || null; state.season = s.season; state.age = s.age;
+    state.maxSeasons = s.maxSeasons || 25;
     state.matchesPlayed = s.matchesPlayed; state.goals = s.goals; state.assists = s.assists;
     state.wins = s.wins || 0; state.careerWins = s.careerWins || 0; state.savesCount = s.savesCount || 0; state.cleanSheets = s.cleanSheets || 0;
     state.yellowCards = s.yellowCards || 0; state.redCards = s.redCards || 0; state.totalYellows = s.totalYellows || 0;
@@ -2341,12 +2474,15 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     state.seasonYellows = s.seasonYellows || 0; state.seasonReds = s.seasonReds || 0;
     state.halfSeason = s.halfSeason || 1; state.currentCompetitions = s.currentCompetitions || ['league', 'national_cup'];
     state.careerActive = true; state.selectedOfferIdx = -1; state.pendingOffers = [];
-    state.trainingAvailable = s.trainingAvailable !== false; state.reputation = s.reputation !== undefined ? s.reputation : 50;
+    state.trainingAvailable = s.trainingAvailable !== false;
+    state.tapTrainingAvailable = s.tapTrainingAvailable !== false;
+    state.reputation = s.reputation !== undefined ? s.reputation : 50;
     state.contractYears = s.contractYears !== undefined ? s.contractYears : 3;
     state.seasonTopPlayers = s.seasonTopPlayers || generateTopPlayers();
     state.bestSeason = s.bestSeason || null; state.bestMatchGoals = s.bestMatchGoals || 0;
     state.unlockedAchievements = s.unlockedAchievements || {}; state.news = s.news || [];
-    state.sandboxMode = s.sandboxMode || false; state.matchInProgress = false;
+    state.sandboxMode = s.sandboxMode || false; state.endlessMode = s.endlessMode || false;
+    state.matchInProgress = false;
     state.money = s.money || 0; state.investWins = s.investWins || 0; state.myInvestments = s.myInvestments || [];
     state.notifications = s.notifications || []; state.injuriesCount = s.injuriesCount || 0;
     state.recoveredFromInjury = s.recoveredFromInjury || false;
@@ -2354,30 +2490,62 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     state.injuryType = s.injuryType || null;
     state.currentSponsor = s.currentSponsor || null; state.sponsorsSigned = s.sponsorsSigned || 0;
     state.sponsorLevel = s.sponsorLevel || 0;
+    state.primeActive = s.primeActive || false; state.primeYearsLeft = s.primeYearsLeft || 0;
+    state.wasInPrime = s.wasInPrime || false; state.luckyOvr = s.luckyOvr || false;
     runLoading(function() { showScreen('career'); refreshCareer(); });
   }
 
   function bindEvents() {
     $('btn-new-game').addEventListener('click', function() { showScreen('newgame'); updatePositionHint(); renderTalents(); renderTalentInfo(); });
-    $('btn-sandbox').addEventListener('click', function() { showScreen('sandbox'); });
-    $('btn-sandbox-start').addEventListener('click', startSandbox);
-    $('btn-back-sandbox').addEventListener('click', function() { showScreen('main'); });
+    $('btn-endless').addEventListener('click', startEndless);
 
     $('btn-load-game').addEventListener('click', function() {
       showScreen('load');
       if (!Array.isArray(state.saves) || state.saves.length === 0) $('save-slots').textContent = 'Нет сохранённых игр';
       else {
-        var html = '';
+        $('save-slots').innerHTML = '';
         state.saves.forEach(function(s, i) {
           if (!s || !s.player) return;
           var tal = s.talent ? ' [' + s.talent.name + ']' : '';
-          var mode = s.sandboxMode ? ' 🎮' : '';
-          html += '<div style="padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.1); cursor:pointer;" data-save="' + i + '">' +
-            (i + 1) + '. ' + s.player.fullname + tal + mode + ' — ' + s.player.position + ' OVR:' + s.ovr + ' Сезон:' + s.season + '</div>';
+          var mode = s.endlessMode ? ' ♾️' : '';
+          var row = document.createElement('div');
+          row.style.cssText = 'padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;';
+          row.innerHTML = '<div style="flex:1; cursor:pointer;" data-load="' + i + '">' +
+            (i + 1) + '. ' + s.player.fullname + tal + mode + ' — ' + s.player.position + ' OVR:' + s.ovr + ' Сезон:' + s.season + '</div>' +
+            '<button data-del-save="' + i + '" style="background:transparent; border:none; color:#dc5050; font-size:1.1rem; cursor:pointer; padding:4px;">🗑️</button>';
+          $('save-slots').appendChild(row);
         });
-        $('save-slots').innerHTML = html;
-        var slots = $('save-slots').querySelectorAll('[data-save]');
-        for (var i = 0; i < slots.length; i++) slots[i].addEventListener('click', function() { loadSave(parseInt(this.dataset.save, 10)); });
+        $('save-slots').querySelectorAll('[data-load]').forEach(function(el) {
+          el.addEventListener('click', function() { loadSave(parseInt(this.dataset.load, 10)); });
+        });
+        $('save-slots').querySelectorAll('[data-del-save]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            var idx = parseInt(this.dataset.delSave, 10);
+            var removed = state.saves.splice(idx, 1)[0];
+            if (removed) {
+              if (!state.trashSaves) state.trashSaves = [];
+              state.trashSaves.push(removed);
+              try { localStorage.setItem('goat_saves', JSON.stringify(state.saves)); } catch(e) {}
+              try { localStorage.setItem('goat_trash_saves', JSON.stringify(state.trashSaves)); } catch(e) {}
+              alert('Удалено. Можно восстановить.');
+              $('btn-load-game').click();
+            }
+          });
+        });
+        if (state.trashSaves && state.trashSaves.length > 0) {
+          var restoreBtn = document.createElement('button');
+          restoreBtn.className = 'btn-secondary';
+          restoreBtn.style.marginTop = '12px';
+          restoreBtn.textContent = '♻️ Восстановить из корзины (' + state.trashSaves.length + ')';
+          restoreBtn.onclick = function() {
+            state.saves = state.saves.concat(state.trashSaves);
+            state.trashSaves = [];
+            try { localStorage.setItem('goat_saves', JSON.stringify(state.saves)); } catch(e) {}
+            try { localStorage.setItem('goat_trash_saves', '[]'); } catch(e) {}
+            $('btn-load-game').click();
+          };
+          $('save-slots').appendChild(restoreBtn);
+        }
       }
     });
     $('btn-achievements').addEventListener('click', function() { renderAchievements(); showScreen('achievements'); });
@@ -2390,16 +2558,21 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     $('btn-back-achievements').addEventListener('click', function() { showScreen('main'); });
     $('btn-back-lb').addEventListener('click', function() { showScreen('main'); });
     $('btn-back-top-players').addEventListener('click', function() { showScreen('career'); });
+    $('btn-back-lineup').addEventListener('click', function() { showScreen('career'); });
     $('btn-back-trophies').addEventListener('click', function() { showScreen('career'); });
     $('btn-back-news').addEventListener('click', function() { showScreen('career'); });
     $('btn-back-notifications').addEventListener('click', function() { showScreen('career'); });
     $('btn-back-investments').addEventListener('click', function() { showScreen('career'); });
     $('btn-back-sponsors').addEventListener('click', function() { showScreen('career'); });
-    $('btn-back-career').addEventListener('click', function() { showScreen('main'); state.careerActive = false; state.sandboxMode = false; });
+    $('btn-back-career').addEventListener('click', function() { showScreen('main'); state.careerActive = false; });
     $('btn-back-training').addEventListener('click', function() {
       trainState.active = false; trainState.paused = false;
       if (trainState.animId) cancelAnimationFrame(trainState.animId);
       $('btn-train-tap').textContent = 'ТАП!'; $('btn-train-tap').onclick = tapTraining;
+      showScreen('career');
+    });
+    $('btn-back-tap').addEventListener('click', function() {
+      if (state.tapTimerId) clearInterval(state.tapTimerId);
       showScreen('career');
     });
 
@@ -2420,7 +2593,13 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     $('btn-save-now').addEventListener('click', function() { saveCareer(false); });
     $('btn-training').addEventListener('click', openTraining);
     $('btn-start-training').addEventListener('click', startTrainingGame);
+    $('btn-training-tap-mode').addEventListener('click', openTapTraining);
+    $('btn-tap-big').addEventListener('click', function() {
+      state.tapCount++;
+      $('tap-count').textContent = 'Тапов: ' + state.tapCount;
+    });
     $('btn-top-players').addEventListener('click', function() { renderTopPlayers(); showScreen('top-players'); });
+    $('btn-lineup').addEventListener('click', function() { renderLineup(); showScreen('lineup'); });
     $('btn-trophies').addEventListener('click', function() { renderTrophies(); showScreen('trophies'); });
     $('btn-news').addEventListener('click', function() { renderNews(); showScreen('news'); });
     $('btn-notifications').addEventListener('click', function() { renderNotifications(); showScreen('notifications'); });
@@ -2450,6 +2629,7 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
         for (var j = 0; j < all.length; j++) all[j].classList.remove('active');
         e.currentTarget.classList.add('active');
         try { localStorage.setItem('goat_lang', state.lang); } catch(err) {}
+        updateLanguageUI();
       });
     }
 
@@ -2460,6 +2640,54 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
 
     $('select-position').addEventListener('change', updatePositionHint);
     document.addEventListener('dblclick', function(e) { e.preventDefault(); }, { passive: false });
+  }
+
+  function updateLanguageUI() {
+    var L = state.lang;
+    var txt = {
+      ru: {
+        newGame: 'Новая игра', endless: '♾️ Бесконечный режим', loadGame: 'Загрузить игру',
+        achievements: '🏆 Достижения', leaderboard: '🏅 Лидерборд', settings: 'Настройки',
+        playMatch: 'Сыграть матч', training: '🏋️ Тренировка', sponsors: '💼 Спонсоры',
+        investments: '💰 Инвестиции', notif: '🔔 Уведомления', news: '📰 Новости',
+        trophies: '🏆 Трофеи', topPlayers: '⚽ Топ игроков', lineup: '👥 Состав', save: '💾 Сохранить',
+        backMenu: '← В меню', language: 'Язык', pcMode: 'Режим ПК', bg: 'Фон',
+        account: 'Аккаунт', saves: '💾 Сохранения', on: 'Вкл', off: 'Выкл',
+        createAccount: 'Создать аккаунт', logout: 'Выйти', notCreated: 'Не создан',
+        createPlayer: 'Создание игрока', fio: 'ФИО', country: 'Страна', position: 'Позиция',
+        talent: 'Талант', startCareer: 'Начать карьеру', back: '← Назад'
+      },
+      en: {
+        newGame: 'New Game', endless: '♾️ Endless Mode', loadGame: 'Load Game',
+        achievements: '🏆 Achievements', leaderboard: '🏅 Leaderboard', settings: 'Settings',
+        playMatch: 'Play Match', training: '🏋️ Training', sponsors: '💼 Sponsors',
+        investments: '💰 Investments', notif: '🔔 Notifications', news: '📰 News',
+        trophies: '🏆 Trophies', topPlayers: '⚽ Top Players', lineup: '👥 Squad', save: '💾 Save',
+        backMenu: '← Menu', language: 'Language', pcMode: 'PC Mode', bg: 'Background',
+        account: 'Account', saves: '💾 Saves', on: 'On', off: 'Off',
+        createAccount: 'Create Account', logout: 'Log Out', notCreated: 'Not created',
+        createPlayer: 'Create Player', fio: 'Full Name', country: 'Country', position: 'Position',
+        talent: 'Talent', startCareer: 'Start Career', back: '← Back'
+      }
+    }[L];
+
+    function set(id, key) { var el = $(id); if (el && txt[key]) el.textContent = txt[key]; }
+    set('btn-new-game', 'newGame'); set('btn-endless', 'endless'); set('btn-load-game', 'loadGame');
+    set('btn-achievements', 'achievements'); set('btn-leaderboard', 'leaderboard'); set('btn-settings', 'settings');
+    set('btn-play-match', 'playMatch'); set('btn-training', 'training'); set('btn-sponsors', 'sponsors');
+    set('btn-investments', 'investments'); set('btn-notifications', 'notif'); set('btn-news', 'news');
+    set('btn-trophies', 'trophies'); set('btn-top-players', 'topPlayers'); set('btn-lineup', 'lineup');
+    set('btn-save-now', 'save'); set('btn-back-career', 'backMenu');
+    set('btn-back-news', 'back'); set('btn-back-notifications', 'back'); set('btn-back-investments', 'back');
+    set('btn-back-sponsors', 'back'); set('btn-back-achievements', 'back'); set('btn-back-lb', 'back');
+    set('btn-back-trophies', 'back'); set('btn-back-top-players', 'back'); set('btn-back-lineup', 'back');
+    set('btn-back-settings', 'back'); set('btn-back-load', 'back'); set('btn-back-new', 'back');
+    set('st-lang', 'language'); set('st-pc', 'pcMode'); set('st-bg', 'bg');
+    set('st-acc', 'account'); set('st-saves', 'saves');
+    set('btn-pc-off', 'off'); set('btn-pc-on', 'on');
+    set('btn-create-account', 'createAccount'); set('btn-logout', 'logout');
+    set('ng-title', 'createPlayer'); set('lbl-fio', 'fio'); set('lbl-country', 'country');
+    set('lbl-position', 'position'); set('lbl-talent', 'talent'); set('btn-start-career', 'startCareer');
   }
 
   function init() {
@@ -2498,12 +2726,24 @@ input:focus, select:focus { border-color: #d4b87a; background: rgba(255,255,255,
     } catch(e) { state.leaderboard = []; }
     if (!Array.isArray(state.leaderboard)) state.leaderboard = [];
 
+    try {
+      var trashLb = localStorage.getItem('goat_trash_leaderboard');
+      if (trashLb) { var p = JSON.parse(trashLb); if (Array.isArray(p)) state.trashLeaderboard = p; }
+    } catch(e) {}
+
+    try {
+      var trashS = localStorage.getItem('goat_trash_saves');
+      if (trashS) { var p2 = JSON.parse(trashS); if (Array.isArray(p2)) state.trashSaves = p2; }
+    } catch(e) {}
+
     var langBtns = document.querySelectorAll('[data-lang]');
     for (var i = 0; i < langBtns.length; i++) langBtns[i].classList.toggle('active', langBtns[i].dataset.lang === state.lang);
     var swatches = document.querySelectorAll('.bg-swatch');
     for (var i2 = 0; i2 < swatches.length; i2++) swatches[i2].classList.toggle('active', swatches[i2].dataset.bg === state.bg);
 
-    updateAccountUI(); updateSaveCountInfo(); updatePositionHint(); updatePCToggleUI(); bindEvents();
+    updateAccountUI(); updateSaveCountInfo(); updatePositionHint(); updatePCToggleUI();
+    updateLanguageUI();
+    bindEvents();
     console.log('The Goat loaded. XerroWorx Studios.');
   }
 
